@@ -19,6 +19,5 @@ jobs:
       run: |
         npm i
     - name: Run Eslint
-      working-directory: client-ui
       run: |
         npm run lint
