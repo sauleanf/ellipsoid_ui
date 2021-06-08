@@ -25,7 +25,7 @@ class LocalStorageMock {
   }
 }
 
-process.env.API='localhost';
+process.env.REACT_APP_API ='localhost';
 
 global.localStorage = new LocalStorageMock();
 

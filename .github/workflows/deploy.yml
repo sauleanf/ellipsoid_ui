@@ -20,7 +20,7 @@ jobs:
       run: |
         npm run build
       env:
-        API: ${{ secrets.API }}
+        REACT_APP_API: ${{ secrets.API }}
     - uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete

@@ -12,7 +12,7 @@ class ApiClient {
   }
 
   static get endpoint() {
-    return `${process.env.API}/api/v1/${this.Schema.type}s`;
+    return `${process.env.REACT_APP_API}/api/v1/${this.Schema.type}s`;
   }
 
   // API BELOW
