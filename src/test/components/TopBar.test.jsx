@@ -3,13 +3,11 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { Actions } from 'api-client';
+import { LocationActions } from '../../actions';
 
 import rootReducer from '../../reducers';
 import TopBar from '../../components/TopBar';
 import { article } from '../fixtures';
-
-const { LocationActions } = Actions;
 
 describe('TopBar', () => {
   const filterParam = 'filter these';

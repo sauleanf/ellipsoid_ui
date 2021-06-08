@@ -7,13 +7,11 @@ import {
   applyMiddleware,
   createStore,
 } from 'redux';
-import { Actions } from 'api-client';
+import { ArticleActions } from '../../actions';
 
 import rootReducer from '../../reducers';
 import SideMenu from '../../components/SideMenu';
 import { createArticlesAndNewspapers } from '../fixtures';
-
-const { ArticleActions } = Actions;
 
 describe('SideMenu', () => {
   let wrapper;
