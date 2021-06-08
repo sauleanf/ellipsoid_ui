@@ -25,6 +25,8 @@ class LocalStorageMock {
   }
 }
 
+process.env.API='localhost';
+
 global.localStorage = new LocalStorageMock();
 
 jest.mock('axios');

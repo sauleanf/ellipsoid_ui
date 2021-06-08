@@ -8,7 +8,7 @@ import {
 } from '../fixtures';
 
 describe('LogApi', () => {
-  const url = 'api/v1/logs/';
+  const url = 'localhost/api/v1/logs/';
   const {
     item,
     raw,

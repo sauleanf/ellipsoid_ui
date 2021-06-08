@@ -8,7 +8,7 @@ import {
 } from '../fixtures';
 
 describe('UserApi', () => {
-  const url = 'api/v1/users/';
+  const url = 'localhost/api/v1/users/';
   const {
     raw,
     item,
