@@ -1,0 +1,24 @@
+@keyframes click-pulse {
+  0% {
+    opacity: 1;
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    opacity: 0;
+    width: 4rem;
+    height: 4rem;
+    transform: translate(-2rem, -2rem);
+  }
+}
+
+.click-pulse {
+  display: flex;
+  margin: auto;
+  background-color: #85baa9;
+  border-radius: 40rem;
+  z-index: 5;
+  position: absolute;
+  animation: click-pulse ease-in 1s infinite;
+}

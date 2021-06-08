@@ -1,0 +1,27 @@
+.article-group-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.1rem 0.7rem 1rem 0.7rem;
+  margin: 0.25rem;
+  border-bottom: 1px solid black;
+}
+
+.newspaper-name {
+  font-size: 1.8rem;
+  padding: 0.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: serif;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+}
+
+.newspaper-name:hover {
+  cursor: pointer;
+}
+
+.newspaper-name:focus {
+  outline: none;
+}

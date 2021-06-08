@@ -1,0 +1,23 @@
+.map-container {
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.5s ease-in;
+}
+
+.map-loading-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in;
+}
+
+.top-bar-name {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: 10rem;
+  font-family: sans-serif;
+}

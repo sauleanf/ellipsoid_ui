@@ -1,0 +1,15 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.form-title {
+  display: flex;
+  justify-content: center;
+}
