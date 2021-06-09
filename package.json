@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "REACT_APP_API=http://52.70.140.64/ && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "cypress": "cypress run",
     "cypress:open": "cypress open",
