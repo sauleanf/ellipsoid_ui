@@ -1,18 +1,20 @@
 .search-bar-container {
   display: inline-flex;
   margin: 0.5rem;
+  padding: 0.25rem;
   border-bottom: 2px solid transparent;
-  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.25) 0 7px 29px 0;
+  border-radius: 4px;
   overflow: hidden;
   transition: all 0.2s ease-in;
 }
 
 .search-bar-container-input {
   font-size: 1.1rem;
-  width: 16rem;
   opacity: 0;
+  width: 16rem;
   border: none;
-  padding: 0 1rem;
+  background-color: transparent;
   transition: all 0.2s ease-in;
 }
 
@@ -24,6 +26,7 @@
   opacity: 0;
   background-color: transparent;
   border: none;
+  padding: 0 0.6rem;
   transition: all 0.2s ease-in;
 }
 
@@ -49,11 +52,6 @@
 
 .search-bar-container-filled {
   opacity: 1;
-  border-bottom: 2px solid #333;
-}
-
-.search-bar-container:hover {
-  border-bottom: 2px solid #333;
 }
 
 .search-bar-icon {
@@ -65,5 +63,4 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  background-color: orange;
 }
