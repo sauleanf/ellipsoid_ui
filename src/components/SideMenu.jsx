@@ -61,12 +61,14 @@ class SideMenu extends React.Component {
     const isOpen = !_.isEmpty(newspaperInView);
     return (
       <Modal isOpen={isOpen} onClose={() => this.setState({ newspaperInView: {} })}>
-        <h2 className="newspaper-modal-name">
-          {newspaperInView.name}
-        </h2>
-        <p className="newspaper-modal-description">
-          {newspaperInView.description}
-        </p>
+        <div>
+          <h2 className="newspaper-modal-name">
+            {newspaperInView.name}
+          </h2>
+          <p className="newspaper-modal-description">
+            {newspaperInView.description}
+          </p>
+        </div>
       </Modal>
     );
   }
