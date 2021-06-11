@@ -107,7 +107,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setArticleFilterParam: (param) => dispatch(ArticleActions(param)),
   fetchArticles: (args) => dispatch(ArticleActions.getAll(args)),
 });
 
