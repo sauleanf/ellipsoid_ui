@@ -11,27 +11,21 @@ import {
 
 describe('LocationsReducer', () => {
   const { item } = location;
-  const state = {
-    coordinates: [],
-  };
 
   testFetching({
     Actions: LocationsActions,
     reduce: LocationReducer,
-    state,
   });
 
   testIndex({
     Actions: LocationsActions,
     reduce: LocationReducer,
     item,
-    state,
   });
 
   testSet({
     Actions: LocationsActions,
     reduce: LocationReducer,
     item,
-    state,
   });
 });

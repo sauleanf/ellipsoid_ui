@@ -15,7 +15,6 @@ describe('LocationsActions', () => {
       UPDATE: 'update location',
       SET: 'set location',
       FETCHING: 'fetching location',
-      SET_COORDINATES: 'set coordinates',
     };
 
     it('returns the right ones', () => {
