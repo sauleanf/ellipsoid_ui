@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LocationActions, NewsPaperActions } from './actions';
-import MapPage from './components/MapPage';
+import MainPage from './components/MainPage';
 
 class App extends React.Component {
   componentDidMount() {
@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   render() {
-    return <MapPage />;
+    return <MainPage />;
   }
 }
 

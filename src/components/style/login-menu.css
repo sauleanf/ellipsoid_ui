@@ -1,0 +1,21 @@
+.login-menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.register-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0.4rem;
+}
+
+.register-btn:hover {
+  cursor: pointer;
+}

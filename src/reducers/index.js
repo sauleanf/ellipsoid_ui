@@ -1,13 +1,17 @@
 import { combineReducers } from 'redux';
 
-import ArticleReducer from './article.reducer';
-import LocationReducer from './location.reducer';
-import NewsPaperReducer from './newspaper.reducer';
+import articleReducer from './article.reducer';
+import locationReducer from './location.reducer';
+import newsPaperReducer from './newspaper.reducer';
+import errorReducer from './error.reducer';
+import userReducer from './user.reducer';
 
 const rootReducer = combineReducers({
-  articles: ArticleReducer,
-  locations: LocationReducer,
-  newspapers: NewsPaperReducer,
+  articles: articleReducer,
+  locations: locationReducer,
+  newspapers: newsPaperReducer,
+  errors: errorReducer,
+  users: userReducer,
 });
 
 export default rootReducer;

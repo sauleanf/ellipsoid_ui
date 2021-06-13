@@ -25,9 +25,3 @@
 .newspaper-name:focus {
   outline: none;
 }
-
-.newspaper-modal-name {
-  display: flex;
-  width: 100%;
-  background-color: 'blue';
-}

@@ -14,6 +14,7 @@ export { default as Navbar } from './Navbar';
 export { default as SearchBar } from './SearchBar';
 export { default as SpinningIcon } from './SpinningIcon';
 export { default as Form } from './Form';
+export { default as Snackbar } from './Snackbar';
 export { default as InputField } from './InputField';
 export { default as Icon } from './Icon';
 

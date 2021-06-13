@@ -9,6 +9,7 @@ const InputField = (props) => {
     onChange,
     type,
     value,
+    label,
   } = props;
   return (
     <div className="input-box">
@@ -16,6 +17,7 @@ const InputField = (props) => {
       <input
         name={name}
         type={type}
+        placeholder={label}
         onChange={(e) => onChange(e)}
         value={value}
       />
@@ -28,6 +30,7 @@ InputField.propTypes = {
   onChange: PropTypes.func,
   type: PropTypes.string,
   value: PropTypes.string,
+  label: PropTypes.string,
   icon: PropTypes.string,
 };
 
@@ -36,6 +39,7 @@ InputField.defaultProps = {
   onChange: () => {},
   type: 'text',
   value: '',
+  label: '',
   icon: '',
 };
 

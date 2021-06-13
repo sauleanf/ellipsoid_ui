@@ -1,7 +1,7 @@
 .paginated-menu-container {
   position: fixed;
-  width: 50%;
-  max-width: 40rem;
+  width: 50rem;
+  max-width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
