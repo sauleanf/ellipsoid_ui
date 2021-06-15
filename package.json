@@ -24,7 +24,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_API=https://api.ellipsoid.earth react-scripts start",
+    "start:local": "REACT_APP_API=http://127.0.0.1:5000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "cypress": "cypress run",
