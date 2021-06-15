@@ -14,6 +14,7 @@ describe('LocationsActions', () => {
       CREATE: 'create location',
       UPDATE: 'update location',
       SET: 'set location',
+      REMOVE: 'remove location',
       FETCHING: 'fetching location',
     };
 

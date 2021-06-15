@@ -70,7 +70,7 @@ class MainPage extends React.Component {
     }
 
     return (
-      <div test-id="map-page-container">
+      <div className="main-page-container">
         {this.renderSideMenu()}
         <TopBar />
         <MapContainer

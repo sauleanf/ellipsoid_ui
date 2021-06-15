@@ -101,7 +101,7 @@ describe('SideMenu', () => {
         .toEqual(0);
 
       wrapper.find('button.newspaper-name').at(0).simulate('click');
-      wrapper.find('.modal-footer-container button').at(0).simulate('click');
+      wrapper.find('.modal-close-btn').at(0).simulate('click');
 
       expect(wrapper.find('.modal-body-container .newspaper-modal-name').length)
         .toEqual(0);

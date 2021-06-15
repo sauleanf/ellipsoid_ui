@@ -23,7 +23,7 @@ class UserApi extends AuthApi {
   }
 
   static async self() {
-    return this.request({ endpoint: _.join([process.env.REACT_APP_API, 'api/v1/auth'], '/') });
+    return this.request({ endpoint: this.endpoint });
   }
 }
 

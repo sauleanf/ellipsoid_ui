@@ -82,7 +82,7 @@ class SideMenu extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="side-menu-paginated-container">
         <PaginatedMenu
           isOpen={!_.isEmpty(articles)}
           page={page}

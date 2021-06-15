@@ -25,11 +25,11 @@ const createApiReducer = (
 
   return (state = initialApiState, action) => {
     const actionObj = _.assign({
-      [Actions.types.FETCHING]: (currentState) => ({
+      [Actions.types.FETCHING]: ({ currentState }) => ({
         ...currentState,
         fetching: true,
       }),
-      [Actions.types.INDEX]: (currentState, payload) => {
+      [Actions.types.INDEX]: ({ currentState, payload }) => {
         const {
           page,
           pages,
@@ -44,7 +44,7 @@ const createApiReducer = (
           fetching: false,
         };
       },
-      [Actions.types.SET]: (currentState, payload) => {
+      [Actions.types.SET]: ({ currentState, payload }) => {
         const {
           item,
         } = payload;
@@ -54,7 +54,8 @@ const createApiReducer = (
           fetching: false,
         };
       },
-      [Actions.types.FILTER]: (currentState, payload) => {
+      [Actions.types.REMOVE]: ({ initState }) => initState,
+      [Actions.types.FILTER]: ({ currentState, payload }) => {
         const {
           page,
           pages,
@@ -74,9 +75,13 @@ const createApiReducer = (
       },
     }, actions);
 
-    const reduce = _.get(actionObj, action.type, (currentState) => currentState);
+    const reduce = _.get(actionObj, action.type, ({ currentState }) => currentState);
 
-    return reduce(state, action.payload);
+    return reduce({
+      currentState: state,
+      payload: action.payload,
+      initState: initialApiState,
+    });
   };
 };
 

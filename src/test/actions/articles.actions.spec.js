@@ -14,6 +14,7 @@ describe('ArticlesActions', () => {
       CREATE: 'create article',
       UPDATE: 'update article',
       SET: 'set article',
+      REMOVE: 'remove article',
       FETCHING: 'fetching article',
     };
 

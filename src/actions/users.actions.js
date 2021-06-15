@@ -23,21 +23,29 @@ class UsersActions extends ApiActions {
     };
   }
 
-  static logout() {
+  static self() {
     return async (dispatch) => {
-      await this.Api.logout();
-      dispatch({
-        type: this.types.LOGOUT,
-      });
+      if (this.Api.isAuthenticated()) {
+        try {
+          const payload = await this.Api.self();
+          dispatch({
+            type: this.types.SET,
+            payload,
+          });
+        } catch (e) {
+          await this.Api.removeToken();
+        }
+      }
     };
   }
 
-  static get types() {
-    const typeMap = super.types;
-    typeMap.SELF = 'get self';
-    typeMap.LOGOUT = 'logout user';
-
-    return typeMap;
+  static logout() {
+    return (dispatch) => {
+      this.Api.removeToken();
+      dispatch({
+        type: this.types.REMOVE,
+      });
+    };
   }
 }
 

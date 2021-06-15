@@ -34,7 +34,7 @@ export const testIndex = ({
   state,
 }) => {
   describe('INDEX', () => {
-    it('sets fetching to true', () => {
+    it('sets the items and fetching', () => {
       const newState = reduce(undefined, {
         type: Actions.types.INDEX,
         payload: {
@@ -122,6 +122,50 @@ export const testFilter = ({
         pages: 0,
         fetching: false,
       }, state));
+    });
+  });
+};
+
+export const testRemove = ({
+  reduce,
+  Actions,
+  state,
+  initialState,
+}) => {
+  describe('REMOVE', () => {
+    const completeState = _.assign({
+      items: [{}],
+      item: {
+        id: 'id1'
+      },
+      filtered: {
+        items: [],
+        page: 1,
+        pages: 2,
+        param: 'param',
+      },
+      page: 1,
+      pages: 3,
+      fetching: false,
+    }, state)
+    const completeInitialState = _.assign({
+      items: [],
+      item: {},
+      filtered: {
+        items: [],
+        page: -1,
+        pages: 0,
+        param: '',
+      },
+      page: -1,
+      pages: 0,
+      fetching: true,
+    }, initialState);
+    it('resets the state', () => {
+      const newState = reduce(completeState, {
+        type: Actions.types.REMOVE,
+      });
+      expect(newState).toEqual(completeInitialState);
     });
   });
 };

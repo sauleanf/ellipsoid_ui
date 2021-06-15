@@ -21,10 +21,26 @@ describe('Modal', () => {
     );
   });
 
-  it('triggers the on close prop when clicked', () => {
-    wrapper.find('.modal-footer-container button').simulate('click');
-    expect(onCloseSpy).toBeCalled();
-  });
+  describe("close button", () => {
+    it('triggers the on close prop', () => {
+      wrapper.find('.modal-close-btn').simulate('click');
+      expect(onCloseSpy).toBeCalled();
+    });
+  })
+
+  describe("background", () => {
+    it('triggers the on close prop', () => {
+      wrapper.find('.modal-container').simulate('click');
+      expect(onCloseSpy).toBeCalled();
+    });
+  })
+
+  describe("modal box", () => {
+    it('does not triggers the on close prop', () => {
+      wrapper.find('.modal-box').simulate('click');
+      expect(onCloseSpy).not.toBeCalled();
+    });
+  })
 
   it('renders children', () => {
     expect(wrapper.containsMatchingElement(childComponent)).toEqual(true);

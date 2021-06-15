@@ -3,7 +3,7 @@ import ArticlesActions from '../actions/articles.actions';
 
 export default createApiReducer(ArticlesActions, {
   actions: {
-    [ArticlesActions.types.INDEX]: (currentState, payload) => {
+    [ArticlesActions.types.INDEX]: ({ currentState, payload }) => {
       const {
         page,
         pages,

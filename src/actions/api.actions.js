@@ -116,6 +116,7 @@ class ApiActions {
       CREATE: 'create {}',
       UPDATE: 'update {}',
       SET: 'set {}',
+      REMOVE: 'remove {}',
       FETCHING: 'fetching {}',
     };
 
