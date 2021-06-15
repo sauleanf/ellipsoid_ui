@@ -1,6 +1,7 @@
 .input-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .form-container {
@@ -12,4 +13,8 @@
 .form-title {
   display: flex;
   justify-content: center;
+}
+
+.form-btn-container {
+  margin-top: 1rem;
 }

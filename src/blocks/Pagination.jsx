@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import PropType from 'prop-types';
 import './style/pagination.css';
+import Icon from './Icon';
 
 class Pagination extends React.Component {
   constructor(props) {
@@ -53,7 +54,8 @@ class Pagination extends React.Component {
           onClick={() => this.onPageChangeConfirm(current - 1)}
           disabled={isAtFirstPage}
         >
-          {'<'}
+          <Icon icon="fa-angle-left" theme="dark" />
+          Prev
         </button>
         <div className="pagination-center-container">
           <input
@@ -72,7 +74,8 @@ class Pagination extends React.Component {
           onClick={() => this.onPageChangeConfirm(current + 1)}
           disabled={current === pages}
         >
-          {'>'}
+          Next
+          <Icon icon="fa-angle-right" theme="dark" />
         </button>
       </div>
     );

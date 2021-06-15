@@ -1,14 +1,14 @@
 .pagination-btn {
-  width: 3rem;
+  width: 8rem;
   height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #61dafb;
+  background-color: #111;
   border: none;
   border-radius: 3px;
   transition: all 0.2s ease-in;
-  color: #333;
+  color: white;
   font-size: 1.1rem;
 }
 
@@ -41,16 +41,17 @@
 }
 
 .pagination-btn:hover {
-  background-color: #cdd4d4;
+  background-color: #444;
   cursor: pointer;
   color: white;
 }
 
 .disabled-pagination-btn,
 .disabled-pagination-btn:hover {
-  cursor: not-allowed;
-  background-color: #666 !important;
-  color: #eee;
+  cursor: default;
+  color: black !important;
+  opacity: 0;
+  background-color: transparent;
 }
 
 .pagination-container {

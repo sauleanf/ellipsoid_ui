@@ -5,6 +5,10 @@ import {
 
 export { default as ButtonGroup } from './ButtonGroup';
 export { default as Button } from './Button';
+// eslint-disable-next-line import/no-cycle
+export { default as FAB } from './FAB';
+// eslint-disable-next-line import/no-cycle
+export { default as Chip } from './Chip';
 export { default as ClickPulse } from './ClickPulse';
 export { default as MapContainer } from './MapContainer';
 export { default as Modal } from './Modal';

@@ -31,7 +31,7 @@ class PaginatedMenu extends React.Component {
         <div className="paginated-menu-body-container">
           {children}
         </div>
-        <div className="paginated-menu-close-btn-container">
+        <div className="paginated-menu-pagination-btn-container">
           {this.renderPagination()}
         </div>
         <div />

@@ -13,8 +13,16 @@ const Modal = (props) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-container fade-in modal-open">
-      <div className="modal-box">
+    <div
+      aria-hidden="true"
+      className="modal-container fade-in modal-open"
+      onClick={() => onClose()}
+    >
+      <div
+        aria-hidden="true"
+        className="modal-box"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           type="button"
           className="modal-close-btn"

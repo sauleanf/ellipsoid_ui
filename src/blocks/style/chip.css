@@ -1,0 +1,6 @@
+.chip-box {
+  min-width: 8rem;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+}
