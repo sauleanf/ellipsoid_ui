@@ -40,7 +40,7 @@ describe('App', () => {
     );
   });
 
-  it('renders the text props', () => {
+  it('renders the main page', () => {
     expect(wrapper.find(MainPage).exists()).toBe(true);
   });
 });
