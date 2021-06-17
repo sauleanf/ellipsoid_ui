@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style/modal.css';
-import Button from './Button';
+import Icon from './Icon';
 
 const Modal = (props) => {
   const {
@@ -13,18 +13,27 @@ const Modal = (props) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-container fade-in modal-open">
-      <div className="modal-box">
+    <div
+      aria-hidden="true"
+      className="modal-container fade-in modal-open"
+      onClick={() => onClose()}
+    >
+      <div
+        aria-hidden="true"
+        className="modal-box"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          className="modal-close-btn"
+          onClick={() => onClose()}
+        >
+          <Icon icon="fa-window-close" />
+        </button>
         <div className="modal-body-container">
           {children}
         </div>
-        <div className="modal-footer-container">
-          <Button onClick={() => onClose()}>
-            Close
-          </Button>
-        </div>
       </div>
-
     </div>
   );
 };

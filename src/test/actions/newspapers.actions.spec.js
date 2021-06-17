@@ -14,6 +14,7 @@ describe('NewsPapersActions', () => {
       CREATE: 'create newspaper',
       UPDATE: 'update newspaper',
       SET: 'set newspaper',
+      REMOVE: 'remove newspaper',
       FETCHING: 'fetching newspaper',
     };
 

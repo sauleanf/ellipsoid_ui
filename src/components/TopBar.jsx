@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { LocationActions } from '../actions';
+import { LocationsActions } from '../actions';
 import { Navbar, SearchBar } from '../blocks';
 
 const TopBar = (props) => {
   const { filteredLocations } = props;
+
   return (
-    <div test-id="navbar-container">
+    <div id="navbar-container">
       <Navbar>
         <div className="top-bar-name">.ellipsoid</div>
         <SearchBar filter={(value) => filteredLocations(value)} />
@@ -21,10 +22,7 @@ TopBar.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  filteredLocations: (param) => {
-    const func = LocationActions.filter(param);
-    return dispatch(func);
-  },
+  filteredLocations: (param) => dispatch(LocationsActions.filter(param)),
 });
 
 export default connect(null, mapDispatchToProps)(TopBar);

@@ -31,6 +31,14 @@ svg {
   vertical-align: middle;
 }
 
+.light {
+  color: black !important;
+}
+
+.dark {
+  color: white !important;
+}
+
 .fade-in {
   animation: fade-in 0.4s ease-in;
 }

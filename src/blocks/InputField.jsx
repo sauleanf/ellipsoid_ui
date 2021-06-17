@@ -9,13 +9,18 @@ const InputField = (props) => {
     onChange,
     type,
     value,
+    label,
+    error,
   } = props;
+  const errorClassName = error ? 'errored-input-box' : null;
+  const inputClassName = `input-box ${errorClassName}`;
   return (
-    <div className="input-box">
+    <div className={inputClassName}>
       <i className={`fas ${icon}`} />
       <input
         name={name}
         type={type}
+        placeholder={label}
         onChange={(e) => onChange(e)}
         value={value}
       />
@@ -28,7 +33,9 @@ InputField.propTypes = {
   onChange: PropTypes.func,
   type: PropTypes.string,
   value: PropTypes.string,
+  label: PropTypes.string,
   icon: PropTypes.string,
+  error: PropTypes.bool,
 };
 
 InputField.defaultProps = {
@@ -36,7 +43,9 @@ InputField.defaultProps = {
   onChange: () => {},
   type: 'text',
   value: '',
+  label: '',
   icon: '',
+  error: false,
 };
 
 export default InputField;

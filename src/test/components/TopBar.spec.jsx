@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { LocationActions } from '../../actions';
+import { LocationsActions } from '../../actions';
 
 import rootReducer from '../../reducers';
 import TopBar from '../../components/TopBar';
@@ -27,7 +27,7 @@ describe('TopBar', () => {
       </Provider>,
     );
 
-    jest.spyOn(LocationActions.Api, 'index')
+    jest.spyOn(LocationsActions.Api, 'index')
       .mockImplementation(async () => ({
         items: [item],
         page: 1,

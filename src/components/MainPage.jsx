@@ -2,18 +2,17 @@ import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  MapContainer,
-  SpinningIcon,
-} from '../blocks';
+import { MapContainer, SpinningIcon } from '../blocks';
 
+import BottomBar from './BottomBar';
 import SideMenu from './SideMenu';
 import TopBar from './TopBar';
 
 import { Location } from '../schemas';
-import { ArticleActions } from '../actions';
+import { ArticlesActions } from '../actions';
+import './style/main-page.css';
 
-class MapPage extends React.Component {
+class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,19 +70,20 @@ class MapPage extends React.Component {
     }
 
     return (
-      <div test-id="map-page-container">
+      <div className="main-page-container">
         {this.renderSideMenu()}
         <TopBar />
         <MapContainer
           markers={this.locations}
           onRetrieveCoordinates={(lng, lat) => this.retrieveArticles(lng, lat, 1)}
         />
+        <BottomBar />
       </div>
     );
   }
 }
 
-MapPage.propTypes = {
+MainPage.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   locations: PropTypes.arrayOf(PropTypes.shape(Location.propType)),
   filteredLocations: PropTypes.arrayOf(PropTypes.shape(Location.propType)),
@@ -91,7 +91,7 @@ MapPage.propTypes = {
   coordinates: PropTypes.arrayOf(PropTypes.number),
 };
 
-MapPage.defaultProps = {
+MainPage.defaultProps = {
   locations: [],
   coordinates: [0, 0],
   filteredLocations: [],
@@ -107,7 +107,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchArticles: (args) => dispatch(ArticleActions.getAll(args)),
+  fetchArticles: (args) => dispatch(ArticlesActions.getAll(args)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

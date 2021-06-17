@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -24,14 +23,15 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_API=https://api.ellipsoid.earth react-scripts start",
+    "start:local": "REACT_APP_API=http://127.0.0.1:5000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "cypress": "cypress run",
     "cypress:open": "cypress open",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx && stylelint src/**/*.css",
-    "lint:fix": "eslint src/**/*.js src/**/*.jsx --fix && stylelint src/**/*.css --fix"
+    "lint": "eslint src/**/*.js src/**/*.spec.js src/**/*.jsx src/**/*.spec.jsx && stylelint src/**/*.css",
+    "lint:fix": "eslint src/**/*.js src/**/*.spec.js src/**/*.jsx src/**/*.spec.jsx --fix && stylelint src/**/*.css --fix"
   },
   "eslintConfig": {
     "extends": [
