@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  LocationActions,
-  NewsPaperActions,
-  UserActions,
+  LocationsActions,
+  NewsPapersActions,
+  UsersActions,
 } from './actions';
 import MainPage from './components/MainPage';
 
@@ -32,9 +32,9 @@ App.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchLocations: () => dispatch(LocationActions.getAll()),
-  fetchUser: () => dispatch(UserActions.self()),
-  fetchNewspapers: () => dispatch(NewsPaperActions.getAll()),
+  fetchLocations: () => dispatch(LocationsActions.getAll()),
+  fetchUser: () => dispatch(UsersActions.self()),
+  fetchNewspapers: () => dispatch(NewsPapersActions.getAll()),
 });
 
 export default connect(null, mapDispatchToProps)(App);

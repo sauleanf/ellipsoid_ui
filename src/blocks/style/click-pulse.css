@@ -18,7 +18,7 @@
   margin: auto;
   background-color: #85baa9;
   border-radius: 40rem;
-  z-index: 5;
+  z-index: 2;
   position: absolute;
   animation: click-pulse ease-in 1s infinite;
 }
