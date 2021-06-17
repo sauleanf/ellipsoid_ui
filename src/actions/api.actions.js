@@ -1,37 +1,10 @@
 import _ from 'lodash';
-import { setError } from './errors.actions';
+import ErrorsActions from './errors.actions';
 
 class ApiActions {
   static get Api() { return null; }
 
   static get filterParams() { return []; }
-
-  // validation
-
-  static validateRequiredFields(params) {
-    const requiredFields = _.filter(
-      this.Api.schema,
-      (fieldData) => _.has(fieldData, 'isRequired'),
-    );
-
-    const errors = {};
-    _.each(requiredFields, (requiredField) => {
-      if (!_.has(params, requiredField)) {
-        errors[requiredField] = `${requiredField} is missing`;
-      }
-    });
-
-    return errors;
-  }
-
-  static validateCreate(params) {
-    const errors = {};
-    _.assign(errors, this.validateRequiredFields(params));
-    _.assign(errors, this.validateCreateParams(params));
-    if (!_.isEmpty(errors)) throw errors;
-  }
-
-  static validateCreateParams() { }
 
   // api requests
 
@@ -86,14 +59,6 @@ class ApiActions {
 
   static create(params) {
     return async (dispatch) => {
-      // validates create params
-      try {
-        this.validateCreate(params);
-      } catch (e) {
-        dispatch(setError(e));
-        return;
-      }
-
       // makes create params request
       try {
         const payload = await this.Api.create(params);
@@ -102,7 +67,7 @@ class ApiActions {
           payload,
         });
       } catch (e) {
-        dispatch(setError(JSON.parse(e.request.response)));
+        dispatch(ErrorsActions.set(JSON.parse(e.request.response)));
       }
     };
   }

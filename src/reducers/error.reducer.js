@@ -1,7 +1,4 @@
-import {
-  SET_ERROR,
-  CLEAR_ERRORS,
-} from '../actions/actions.types';
+import ErrorsActions from '../actions/errors.actions';
 
 const initialState = {
   errors: {},
@@ -9,17 +6,14 @@ const initialState = {
 
 const errorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_ERROR: {
+    case ErrorsActions.types.SET: {
       return {
         ...state,
         errors: action.payload,
       };
     }
-    case CLEAR_ERRORS: {
-      return {
-        ...state,
-        errors: initialState.errors,
-      };
+    case ErrorsActions.types.CLEAR: {
+      return initialState;
     }
     default: {
       return state;

@@ -1,7 +1,6 @@
-import _ from 'lodash';
 import ApiActions from './api.actions';
 import UserApi from '../api/user.api';
-import { setError } from './errors.actions';
+import ErrorsActions from './errors.actions';
 
 class UsersActions extends ApiActions {
   static get Api() {
@@ -17,8 +16,8 @@ class UsersActions extends ApiActions {
           payload,
         });
       } catch (e) {
-        if (_.has(e, 'request')) dispatch(setError(JSON.parse(e.request.response)));
-        else dispatch(setError(e));
+        const error = JSON.parse(e.request.response);
+        dispatch(ErrorsActions.set(error));
       }
     };
   }
@@ -40,7 +39,7 @@ class UsersActions extends ApiActions {
   }
 
   static logout() {
-    return (dispatch) => {
+    return async (dispatch) => {
       this.Api.removeToken();
       dispatch({
         type: this.types.REMOVE,

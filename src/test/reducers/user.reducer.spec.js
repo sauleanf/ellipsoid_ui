@@ -33,5 +33,5 @@ describe('UsersReducer', () => {
   testRemove({
     Actions: UsersActions,
     reduce: UserReducer,
-  })
+  });
 });

@@ -1,4 +1,5 @@
-export { default as ArticleActions } from './articles.actions';
-export { default as LocationActions } from './locations.actions';
-export { default as UserActions } from './users.actions';
-export { default as NewsPaperActions } from './newspapers.actions';
+export { default as ArticlesActions } from './articles.actions';
+export { default as LocationsActions } from './locations.actions';
+export { default as UsersActions } from './users.actions';
+export { default as NewsPapersActions } from './newspapers.actions';
+export { default as ErrorsActions } from './errors.actions';

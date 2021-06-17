@@ -31,7 +31,7 @@ describe('UsersActions', () => {
       expect(apiSpy).toHaveBeenCalledWith({
         email,
         password,
-      })
+      });
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         type: UsersActions.types.SET,
@@ -62,7 +62,6 @@ describe('UsersActions', () => {
 
   describe('self', () => {
     let apiSpy;
-    let dispatchSpy;
     const payload = {
       item,
     };
@@ -74,12 +73,11 @@ describe('UsersActions', () => {
     });
 
     describe('when authenticated', () => {
-
       beforeEach(() => {
         jest.spyOn(UsersActions.Api, 'isAuthenticated').mockImplementation(() => true);
       });
 
-      it('sends the user as a payload', async  () => {
+      it('sends the user as a payload', async () => {
         const action = UsersActions.self();
         await action(dispatchSpy);
 
@@ -96,7 +94,7 @@ describe('UsersActions', () => {
         jest.spyOn(UsersActions.Api, 'isAuthenticated').mockImplementation(() => false);
       });
 
-      it('does not dispatch', async  () => {
+      it('does not dispatch', async () => {
         const action = UsersActions.self();
         await action(dispatchSpy);
 

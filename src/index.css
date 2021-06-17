@@ -32,11 +32,11 @@ svg {
 }
 
 .light {
-  color: black;
+  color: black !important;
 }
 
 .dark {
-  color: white;
+  color: white !important;
 }
 
 .fade-in {

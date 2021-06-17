@@ -7,7 +7,7 @@ import {
   applyMiddleware,
   createStore,
 } from 'redux';
-import { ArticleActions } from '../../actions';
+import { ArticlesActions } from '../../actions';
 
 import rootReducer from '../../reducers';
 import SideMenu from '../../components/SideMenu';
@@ -35,13 +35,13 @@ describe('SideMenu', () => {
       rootReducer,
       applyMiddleware(thunk),
     );
-    jest.spyOn(ArticleActions.Api, 'index')
+    jest.spyOn(ArticlesActions.Api, 'index')
       .mockImplementation(async () => ({
         items,
         page,
         pages,
       }));
-    await store.dispatch(ArticleActions.getAll({
+    await store.dispatch(ArticlesActions.getAll({
       lat,
       lng,
     }));

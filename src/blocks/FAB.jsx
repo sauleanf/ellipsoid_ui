@@ -7,6 +7,7 @@ const FAB = (props) => {
   const { onClick, text, icon } = props;
   return (<div className="fab-container">
     <button
+      id="fab"
       type="button"
       className="fab-btn"
       onClick={() => onClick()}

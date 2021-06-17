@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { UserActions } from '../actions';
+import { UsersActions } from '../actions';
 import Form from './Form';
 import './style/login-menu.css';
 
@@ -49,7 +49,7 @@ RegistrationMenu.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  register: (data) => dispatch(UserActions.create(data)),
+  register: (data) => dispatch(UsersActions.create(data)),
 });
 
 export default connect(null, mapDispatchToProps)(RegistrationMenu);

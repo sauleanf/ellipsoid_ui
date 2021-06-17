@@ -1,22 +1,25 @@
+/* eslint-disable */
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  FAB,
+  Button,
+  Icon,
   Modal,
 } from '../blocks';
 import './style/login-menu.css';
-import { UserActions } from '../actions';
+import { UsersActions, ErrorsActions } from '../actions';
 import LoginMenu from './LoginMenu';
 import RegistrationMenu from './RegistrationMenu';
 import { User } from '../schemas';
 import Profile from './Profile';
+import './style/bottom-bar.css';
 
 const LOGIN_MENU = 'login_menu';
 const REGISTRATION_MENU = 'registration_menu';
 
-class UserMenu extends React.Component {
+class BottomBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,23 +47,41 @@ class UserMenu extends React.Component {
     return !_.isEmpty(user);
   }
 
-  renderUserActionMenu() {
-    const { menu } = this.state;
+  toggleRegistrationMenu() {
+    const { clearErrors } = this.props;
+    clearErrors();
+    this.setState({ menu: REGISTRATION_MENU });
+  }
 
+  renderUserActionMenu() {
     if (this.isAuthenticated()) {
       return <Profile />;
     }
+    const { menu } = this.state;
 
     switch (menu) {
       case LOGIN_MENU: {
         return (
-          <LoginMenu
-            toggleRegistrationMenu={() => this.setState({ menu: REGISTRATION_MENU })}
-          />
+          <div>
+            <LoginMenu />
+            <div className="register-btn-container">
+              <Button
+                type="transparent"
+                color="dark"
+                onClick={() => this.toggleRegistrationMenu()}
+              >
+                Create new account
+              </Button>
+            </div>
+          </div>
         );
       }
       case REGISTRATION_MENU: {
-        return <RegistrationMenu />;
+        return (
+          <div>
+            <RegistrationMenu />
+          </div>
+        );
       }
       default: {
         return null;
@@ -73,30 +94,38 @@ class UserMenu extends React.Component {
     const { login } = this.props;
     const { icon, text } = this.getFABProps();
     return (
-      <div>
+      <div className="bottom-bar-container">
         <Modal
+          id="user-menu-modal"
           isOpen={isOpen}
           onClose={() => this.setState({ isOpen: false, menu: LOGIN_MENU })}
           onSubmit={() => login({ email, password })}
         >
           {this.renderUserActionMenu()}
         </Modal>
-        <FAB
-          icon={icon}
-          text={text}
-          onClick={() => this.setState({ isOpen: true })}
-        />
+        <div className="bottom-bar">
+          <Button
+            id="open-user-menu-btn"
+            type="transparent"
+            color="light"
+            onClick={() => this.setState({ isOpen: true })}
+          >
+            <Icon icon={icon} theme="dark" />
+            {text}
+          </Button>
+        </div>
       </div>
     );
   }
 }
 
-UserMenu.propTypes = {
+BottomBar.propTypes = {
   login: PropTypes.func.isRequired,
   user: PropTypes.shape(User.propType),
+  clearErrors: PropTypes.func.isRequired,
 };
 
-UserMenu.defaultProps = {
+BottomBar.defaultProps = {
   user: {},
 };
 
@@ -106,6 +135,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: ({ email, password }) => dispatch(UserActions.login({ email, password })),
+  clearErrors: () => dispatch(ErrorsActions.clear()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(BottomBar);

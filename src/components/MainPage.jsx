@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MapContainer, SpinningIcon } from '../blocks';
 
+import BottomBar from './BottomBar';
 import SideMenu from './SideMenu';
 import TopBar from './TopBar';
 
 import { Location } from '../schemas';
-import { ArticleActions } from '../actions';
+import { ArticlesActions } from '../actions';
 import './style/main-page.css';
-import LoginMenu from './UserMenu';
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class MainPage extends React.Component {
           markers={this.locations}
           onRetrieveCoordinates={(lng, lat) => this.retrieveArticles(lng, lat, 1)}
         />
-        <LoginMenu />
+        <BottomBar />
       </div>
     );
   }
@@ -107,7 +107,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchArticles: (args) => dispatch(ArticleActions.getAll(args)),
+  fetchArticles: (args) => dispatch(ArticlesActions.getAll(args)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

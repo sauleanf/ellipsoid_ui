@@ -1,12 +1,34 @@
-import { CLEAR_ERRORS, SET_ERROR } from './actions.types';
+import _ from 'lodash';
 
-export const setError = (errorMessage) => (dispatch) => {
-  dispatch({
-    type: SET_ERROR,
-    payload: errorMessage,
-  });
-};
+class ErrorsActions {
+  static set(errorData) {
+    return (dispatch) => {
+      // eslint-disable-next-line dot-notation
+      const error = errorData['error_message'];
+      const payload = {};
+      _.each(error, (errorText, errorKey) => {
+        payload[_.camelCase(errorKey)] = errorText;
+      });
 
-export const clearErrors = () => (dispatch) => {
-  dispatch({ type: CLEAR_ERRORS });
-};
+      dispatch({
+        type: this.types.SET,
+        payload,
+      });
+    };
+  }
+
+  static clear() {
+    return (dispatch) => {
+      dispatch({ type: this.types.CLEAR });
+    };
+  }
+
+  static get types() {
+    return {
+      SET: 'set errors',
+      CLEAR: 'clear errors',
+    };
+  }
+}
+
+export default ErrorsActions;

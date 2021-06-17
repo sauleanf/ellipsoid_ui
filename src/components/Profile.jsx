@@ -4,27 +4,30 @@ import { connect } from 'react-redux';
 import { User } from '../schemas';
 import './style/profile.css';
 import { Icon } from '../blocks';
-import { UserActions } from '../actions';
+import { UsersActions } from '../actions';
 
 const Profile = (props) => {
   const { user, logout } = props;
   return (
-    <div className="list-container">
-      <div className="list-item">
-        <Icon icon="fa-envelope" />
-        {user.email}
-      </div>
-      <div className="list-item">
-        <Icon icon="fa-user" />
-        {user.name}
-      </div>
-      <div
-        aria-hidden="true"
-        className="list-item"
-        onClick={() => logout()}
-      >
-        <Icon icon="fa-sign-out-alt" />
-        Logout
+    <div className="profile-container">
+      <div className="list-container">
+        <div id="user-name-list-item" className="list-item">
+          <Icon icon="fa-envelope" />
+          {user.name}
+        </div>
+        <div id="user-email-list-item" className="list-item">
+          <Icon icon="fa-user" />
+          {user.email}
+        </div>
+        <div
+          id="logout-list-item-btn"
+          aria-hidden="true"
+          className="list-item"
+          onClick={() => logout()}
+        >
+          <Icon icon="fa-sign-out-alt" />
+          Logout
+        </div>
       </div>
     </div>
   );
@@ -40,7 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(UserActions.logout()),
+  logout: () => dispatch(() => UsersActions.logout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

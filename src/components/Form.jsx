@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { clearErrors } from '../actions/errors.actions';
+import { ErrorsActions } from '../actions';
 import { InputField, Snackbar, Button } from '../blocks';
 import './style/form.css';
 
@@ -27,7 +27,7 @@ class Form extends React.Component {
       const { label, name, icon } = field;
       const isProtected = _.get(field, 'protected', false);
       const errorKeys = _.keys(errors);
-      const isErrored = errorKeys.includes(name);
+      const isErrored = errorKeys.includes(name) || errorKeys.includes('_all');
       const { state } = this;
       return (
         <InputField
@@ -45,13 +45,14 @@ class Form extends React.Component {
   }
 
   renderNotification() {
-    const { errors, resetErrors } = this.props;
+    const { errors, clearErrors } = this.props;
     let message = errors;
     if (_.isObject(errors)) message = errors[_.keys(errors)[0]];
+
     return (
       <Snackbar
         isOpen={!_.isEmpty(errors)}
-        onDismiss={() => resetErrors()}
+        onDismiss={() => clearErrors()}
       >
         {message}
       </Snackbar>
@@ -100,7 +101,7 @@ Form.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   errors: PropTypes.shape({}).isRequired,
-  resetErrors: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   onSubmit: PropTypes.func,
   fields: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
@@ -122,7 +123,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetErrors: () => dispatch(clearErrors()),
+  clearErrors: () => dispatch(ErrorsActions.clear()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

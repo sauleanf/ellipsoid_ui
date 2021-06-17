@@ -10,7 +10,7 @@ import {
 
 describe('ArticlesReducer', () => {
   const { item } = article;
-  const state =  {
+  const state = {
     coordinates: [],
   };
   const coordinates = [1, -2];
