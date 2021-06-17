@@ -39,7 +39,7 @@ describe('Profile', () => {
     store.dispatch(UsersActions.login({ email, password }));
   });
 
-  it('displays the right user information', async () => {
+  it('displays the right user information', () => {
     expect(wrapper.find('#user-email-list-item').text()).toEqual(item.email);
     expect(wrapper.find('#user-name-list-item').text()).toEqual(item.name);
   });

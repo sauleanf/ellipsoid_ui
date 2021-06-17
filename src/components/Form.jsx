@@ -64,8 +64,8 @@ class Form extends React.Component {
     if (!title) return null;
 
     return (
-      <div>
-        <h1>
+      <div className="form-text-container">
+        <h1 className="form-title">
           {title}
         </h1>
         <div className="form-description">
@@ -85,9 +85,7 @@ class Form extends React.Component {
           {this.renderInputs()}
         </div>
         <div className="form-btn-container">
-          <Button
-            onClick={() => this.onFormSubmit()}
-          >
+          <Button onClick={() => this.onFormSubmit()}>
             {text}
           </Button>
         </div>
