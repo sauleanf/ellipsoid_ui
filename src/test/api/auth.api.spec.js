@@ -22,17 +22,17 @@ describe('UserApi', () => {
     describe('when there is no token', () => {
       it('returns false', () => {
         expect(AuthApi.isAuthenticated()).toBe(false);
-      })
-    })
+      });
+    });
 
     describe('when there is a token', () => {
       beforeEach(() => {
         AuthApi.setToken({ token });
-      })
+      });
 
       it('returns true', () => {
         expect(AuthApi.isAuthenticated()).toBe(true);
-      })
-    })
+      });
+    });
   });
 });
