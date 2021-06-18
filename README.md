@@ -1,5 +1,8 @@
 # Ellipsoid React Application
 
+[![Actions Status](https://github.com/sauleanf/ellipsoid_ui/workflows/UI%20Unit%20Tests/badge.svg)](https://github.com/sauleanf/ellipsoid_ui/actions)
+[![codecov](https://codecov.io/gh/sauleanf/ellipsoid_ui/branch/master/graph/badge.svg)](https://codecov.io/gh/sauleanf/ellipsoid_ui)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
