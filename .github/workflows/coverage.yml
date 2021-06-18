@@ -1,0 +1,32 @@
+name: Code Coverage
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          npm i
+      - name: Generate Report
+        run: |
+          npm run test -- --coverage --watchAll=false
+          mv ./coverage/clover.xml ./coverage.xml
+      - uses: codecov/codecov-action@v1
+        with:
+          files: ./coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: jest
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          verbose: true

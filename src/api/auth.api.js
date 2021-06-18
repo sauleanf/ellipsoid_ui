@@ -2,7 +2,7 @@ import ApiClient from './api';
 
 class AuthApi extends ApiClient {
   static retrieveHeaders() {
-    const token = localStorage.getItem('@token');
+    const token = this.retrieveToken();
     return {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ class AuthApi extends ApiClient {
   }
 
   static retrieveToken() {
-    localStorage.getItem('@token');
+    return localStorage.getItem('@token');
   }
 }
 

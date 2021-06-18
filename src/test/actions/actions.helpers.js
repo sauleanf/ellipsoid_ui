@@ -73,7 +73,7 @@ export const testFilter = ({
 }) => {
   describe('filter', () => {
     let indexSpy;
-    let dispatchSpy;rr
+    let dispatchSpy;
     const payload = {
       items: [item],
       page: 1,

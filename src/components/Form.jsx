@@ -31,6 +31,7 @@ class Form extends React.Component {
       const { state } = this;
       return (
         <InputField
+          id={`form-input-field-${_.snakeCase(name)}`}
           key={name}
           icon={icon}
           label={label}
