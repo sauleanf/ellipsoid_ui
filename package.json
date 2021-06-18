@@ -31,8 +31,8 @@
     "cypress": "cypress run",
     "cypress:open": "cypress open",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.spec.js src/**/*.jsx src/**/*.spec.jsx && stylelint src/**/*.css",
-    "lint:fix": "eslint src/**/*.js src/**/*.spec.js src/**/*.jsx src/**/*.spec.jsx --fix && stylelint src/**/*.css --fix"
+    "lint": "eslint . && stylelint src/**/*.css",
+    "lint:fix": "eslint . --fix && stylelint src/**/*.css --fix"
   },
   "eslintConfig": {
     "extends": [

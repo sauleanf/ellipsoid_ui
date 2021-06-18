@@ -136,7 +136,7 @@ export const testRemove = ({
     const completeState = _.assign({
       items: [{}],
       item: {
-        id: 'id1'
+        id: 'id1',
       },
       filtered: {
         items: [],
@@ -147,7 +147,7 @@ export const testRemove = ({
       page: 1,
       pages: 3,
       fetching: false,
-    }, state)
+    }, state);
     const completeInitialState = _.assign({
       items: [],
       item: {},
