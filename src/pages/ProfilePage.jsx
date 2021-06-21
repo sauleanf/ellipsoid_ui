@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { User } from '../schemas';
-import './style/profile.css';
+import '../components/style/profile.css';
 import { Icon } from '../blocks';
 import { UsersActions } from '../actions';
 
