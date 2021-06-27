@@ -1,29 +1,24 @@
-import MapPage from "../MapPage";
-import FeedPage from "../FeedPage";
-import ProfilePage from "../ProfilePage";
-import LoginPage from "../LoginPage";
-import RegistrationCompletedPage from "../RegistrationCompletedPage";
-import RegistrationPage from "../RegistrationPage";
-import LoadingPage from "../LoadingPage";
+import mapSet from './types/map';
+import loginSet from './types/login';
+import registrationSet from './types/registration';
+import registrationCompletedSet from './types/registrationCompleted';
+import profileSet from './types/profile';
+import loadingSet from './types/loading';
+import feedSet from './types/feed';
+
+const groups = {
+  AUTH: 'authenticated',
+  DEFAULT: 'normal',
+  LOADING: 'loading',
+};
 
 export default {
-  authenticated: {
+  groups,
+  [groups.AUTH]: {
     attributes: {
-      map: {
-        component: MapPage,
-        text: 'Map',
-        icon: 'fa-map',
-      },
-      feed: {
-        component: FeedPage,
-        text: 'Feed',
-        icon: 'fa-rss',
-      },
-      profile: {
-        component: ProfilePage,
-        text: 'Profile',
-        icon: 'fa-user',
-      },
+      map: mapSet,
+      feed: feedSet,
+      profile: profileSet,
     },
     navigation: [
       'map',
@@ -32,24 +27,12 @@ export default {
     ],
     default: 'map',
   },
-  normal: {
+  [groups.DEFAULT]: {
     attributes: {
-      map: {
-        component: MapPage,
-        text: 'Map',
-        icon: 'fa-map',
-      },
-      login: {
-        component: LoginPage,
-        text: 'Sign In',
-        icon: 'fa-user',
-      },
-      registrationCompleted: {
-        component: RegistrationCompletedPage,
-      },
-      registration: {
-        component: RegistrationPage,
-      },
+      map: mapSet,
+      login: loginSet,
+      registrationCompleted: registrationCompletedSet,
+      registration: registrationSet,
     },
     navigation: [
       'map',
@@ -57,13 +40,9 @@ export default {
     ],
     default: 'map',
   },
-  loading: {
+  [groups.LOADING]: {
     attributes: {
-      loading: {
-        component: LoadingPage,
-        text: 'Sign In',
-        icon: 'fa-user',
-      },
+      loading: loadingSet,
     },
     default: 'loading',
     footer: false,

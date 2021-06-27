@@ -9,7 +9,7 @@ import TopBar from '../components/TopBar';
 
 import { Location } from '../schemas';
 import { ArticlesActions, LocationsActions, NewsPapersActions } from '../actions';
-import '../components/style/main-page.css';
+import './styles/map-page.css';
 
 class MapPage extends React.Component {
   constructor(props) {

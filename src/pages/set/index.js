@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import pageConfig from './pages';
 
-
 class PageSets {
   static mapPageSet(pageSet, cb) {
     const pageSetData = _.get(pageConfig, pageSet, pageConfig.default);
@@ -40,4 +39,3 @@ class PageSets {
 }
 
 export default PageSets;
-

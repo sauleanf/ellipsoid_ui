@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { UsersActions } from '../actions';
-import Form from '../components/Form';
-import './styles/login-page.css';
+
+import { UsersActions, PagesActions } from '../actions';
 import { Button } from '../blocks';
-import PagesActions from '../actions/pages.actions';
+import Form from '../components/Form';
 import Page from './Page';
+
+import './styles/login-page.css';
 
 const formFields = [{
   name: 'email',

@@ -1,6 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import { Icon } from "../blocks";
+import { Icon } from '../blocks';
 import Page from './Page';
 
 const LoadingPage = () => (
