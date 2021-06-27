@@ -7,7 +7,7 @@ import rootReducer from '../reducers';
 import App from '../App';
 import { location, newspaper } from './fixtures';
 import { LocationsActions, NewsPapersActions, UsersActions } from '../actions';
-import MainPage from '../components/MainPage';
+import PageFrame from '../pages/PageFrame';
 
 describe('App', () => {
   let wrapper;
@@ -41,6 +41,6 @@ describe('App', () => {
   });
 
   it('renders the main page', () => {
-    expect(wrapper.find(MainPage).exists()).toBe(true);
+    expect(wrapper.find(PageFrame).exists()).toBe(true);
   });
 });

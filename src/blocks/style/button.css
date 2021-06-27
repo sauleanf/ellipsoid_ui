@@ -9,6 +9,8 @@
 
 .button:hover {
   cursor: pointer;
+  background-color: #5bcae8;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .light-color-btn {
@@ -25,9 +27,4 @@
 
 .solid-btn {
   background-color: #111;
-}
-
-.solid-btn:hover {
-  background-color: #666;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }

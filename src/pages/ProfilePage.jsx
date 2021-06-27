@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { User } from '../schemas';
-import '../components/style/profile.css';
 import { Icon } from '../blocks';
 import { UsersActions } from '../actions';
+import './styles/profile-page.css';
+import Page from './Page';
 
-const Profile = (props) => {
+const ProfilePage = (props) => {
   const { user, logout } = props;
   return (
-    <div className="profile-container">
+    <Page>
       <div className="list-container">
         <div id="user-name-list-item" className="list-item">
           <Icon icon="fa-envelope" />
@@ -29,11 +30,11 @@ const Profile = (props) => {
           Logout
         </div>
       </div>
-    </div>
+    </Page>
   );
 };
 
-Profile.propTypes = {
+ProfilePage.propTypes = {
   user: PropTypes.shape(User.propType).isRequired,
   logout: PropTypes.func.isRequired,
 };
@@ -43,7 +44,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(() => UsersActions.logout()),
+  logout: () => dispatch(UsersActions.logout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

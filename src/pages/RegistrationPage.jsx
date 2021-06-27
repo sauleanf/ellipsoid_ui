@@ -1,9 +1,13 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { UsersActions } from '../actions';
-import Form from './Form';
-import './style/login-menu.css';
+import Form from '../components/Form';
+import './styles/registration-page.css';
+import RegistrationsActions from '../actions/registrations.actions';
+import PagesActions from '../actions/pages.actions';
+import Registration from '../schemas/registration';
+import Page from './Page';
 
 const formFields = [{
   name: 'name',
@@ -29,27 +33,43 @@ const formFields = [{
   protected: true,
 }];
 
-const RegistrationMenu = (props) => {
-  const { register } = props;
-  return (
-    <div>
-      <Form
-        fields={formFields}
-        text="Register"
-        title="Register User"
-        description="Please register the user with the following information"
-        onSubmit={(formData) => register(formData)}
-      />
-    </div>
-  );
-};
+class RegistrationPage extends React.Component {
+  componentDidUpdate() {
+    const { registration, visitRegistrationCompletedPage } = this.props;
+    if (!_.isEmpty(registration)) {
+      visitRegistrationCompletedPage();
+    }
+  }
 
-RegistrationMenu.propTypes = {
+  render() {
+    const { register } = this.props;
+    return (
+      <Page>
+        <Form
+          fields={formFields}
+          text="Register"
+          title="Register User"
+          description="Please enter the following information"
+          onSubmit={(formData) => register(formData)}
+        />
+      </Page>
+    );
+  }
+}
+
+RegistrationPage.propTypes = {
+  registration: PropTypes.shape(Registration.propType).isRequired,
   register: PropTypes.func.isRequired,
+  visitRegistrationCompletedPage: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  register: (data) => dispatch(UsersActions.create(data)),
+const mapStateToProps = (state) => ({
+  registration: state.registrations.item,
 });
 
-export default connect(null, mapDispatchToProps)(RegistrationMenu);
+const mapDispatchToProps = (dispatch) => ({
+  register: (data) => dispatch(RegistrationsActions.create(data)),
+  visitRegistrationCompletedPage: () => dispatch(PagesActions.clearAndPush('registrationCompleted')),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

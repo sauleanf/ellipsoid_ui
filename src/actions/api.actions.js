@@ -63,7 +63,7 @@ class ApiActions {
       try {
         const payload = await this.Api.create(params);
         dispatch({
-          type: this.types.CREATE,
+          type: this.types.SET,
           payload,
         });
       } catch (e) {

@@ -1,40 +1,51 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  LocationsActions,
-  NewsPapersActions,
-  UsersActions,
-} from './actions';
-import MainPage from './components/MainPage';
+import { UsersActions } from './actions';
+import PageFrame from './pages/PageFrame';
+import PagesActions from './actions/pages.actions';
 
 class App extends React.Component {
   componentDidMount() {
     const {
-      fetchNewspapers,
-      fetchLocations,
       fetchUser,
     } = this.props;
-    fetchNewspapers();
-    fetchLocations();
     fetchUser();
+
+    this.setPage();
+  }
+
+  setPage() {
+    const { setPageSet, user } = this.props;
+    if (!_.isEmpty(user)) {
+      setPageSet('authenticated');
+    } else if (!UsersActions.Api.isAuthenticated()) {
+      setPageSet('normal');
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.setPage();
   }
 
   render() {
-    return <MainPage />;
+    return <PageFrame />;
   }
 }
 
 App.propTypes = {
-  fetchLocations: PropTypes.func.isRequired,
-  fetchNewspapers: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
+  setPageSet: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchLocations: () => dispatch(LocationsActions.getAll()),
-  fetchUser: () => dispatch(UsersActions.self()),
-  fetchNewspapers: () => dispatch(NewsPapersActions.getAll()),
+const mapStateToProps = (state) => ({
+  user: state.users.item,
 });
 
-export default connect(null, mapDispatchToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser: () => dispatch(UsersActions.self()),
+  setPageSet: (pageSet) => dispatch(PagesActions.setPageSet(pageSet)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

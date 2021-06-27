@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { UsersActions } from '../actions';
-import Form from './Form';
-import './style/login-menu.css';
+import Form from '../components/Form';
+import './styles/login-page.css';
+import { Button } from '../blocks';
+import PagesActions from '../actions/pages.actions';
+import Page from './Page';
 
 const formFields = [{
   name: 'email',
@@ -16,10 +19,10 @@ const formFields = [{
   protected: true,
 }];
 
-const LoginMenu = (props) => {
-  const { login } = props;
+const LoginPage = (props) => {
+  const { login, visitRegistrationPage } = props;
   return (
-    <div className="login-menu-container">
+    <Page>
       <Form
         fields={formFields}
         text="Login"
@@ -27,16 +30,25 @@ const LoginMenu = (props) => {
         description="Login with your username or password"
         onSubmit={(formData) => login(formData)}
       />
-    </div>
+      <Button
+        type="transparent"
+        color="dark"
+        onClick={() => visitRegistrationPage()}
+      >
+        Register
+      </Button>
+    </Page>
   );
 };
 
-LoginMenu.propTypes = {
+LoginPage.propTypes = {
   login: PropTypes.func.isRequired,
+  visitRegistrationPage: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   login: ({ email, password }) => dispatch(UsersActions.login({ email, password })),
+  visitRegistrationPage: () => dispatch(PagesActions.push('registration')),
 });
 
-export default connect(null, mapDispatchToProps)(LoginMenu);
+export default connect(null, mapDispatchToProps)(LoginPage);

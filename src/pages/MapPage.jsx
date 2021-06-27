@@ -4,20 +4,29 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MapContainer, SpinningIcon } from '../blocks';
 
-import BottomBar from './BottomBar';
-import SideMenu from './SideMenu';
-import TopBar from './TopBar';
+import SideMenu from '../components/SideMenu';
+import TopBar from '../components/TopBar';
 
 import { Location } from '../schemas';
-import { ArticlesActions } from '../actions';
-import './style/main-page.css';
+import { ArticlesActions, LocationsActions, NewsPapersActions } from '../actions';
+import '../components/style/main-page.css';
 
-class MainPage extends React.Component {
+class MapPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       filterParam: '',
     };
+  }
+
+  componentDidMount() {
+    const {
+      fetchNewspapers,
+      fetchLocations,
+    } = this.props;
+
+    fetchNewspapers();
+    fetchLocations();
   }
 
   get locations() {
@@ -77,21 +86,22 @@ class MainPage extends React.Component {
           markers={this.locations}
           onRetrieveCoordinates={(lng, lat) => this.retrieveArticles(lng, lat, 1)}
         />
-        <BottomBar />
       </div>
     );
   }
 }
 
-MainPage.propTypes = {
+MapPage.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   locations: PropTypes.arrayOf(PropTypes.shape(Location.propType)),
   filteredLocations: PropTypes.arrayOf(PropTypes.shape(Location.propType)),
   filterParam: PropTypes.string,
   coordinates: PropTypes.arrayOf(PropTypes.number),
+  fetchLocations: PropTypes.func.isRequired,
+  fetchNewspapers: PropTypes.func.isRequired,
 };
 
-MainPage.defaultProps = {
+MapPage.defaultProps = {
   locations: [],
   coordinates: [0, 0],
   filteredLocations: [],
@@ -108,6 +118,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchArticles: (args) => dispatch(ArticlesActions.getAll(args)),
+  fetchNewspapers: () => dispatch(NewsPapersActions.getAll()),
+  fetchLocations: () => dispatch(LocationsActions.getAll()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MapPage);

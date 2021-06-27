@@ -1,17 +1,17 @@
 import React from 'react';
-import {mount} from 'enzyme';
-import {Provider} from 'react-redux';
-import {applyMiddleware, createStore} from 'redux';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import {UsersActions} from '../../actions';
+import { UsersActions } from '../../actions';
 
 import rootReducer from '../../reducers';
 import LoginMenu from '../../components/LoginMenu';
-import {user} from '../fixtures';
+import { user } from '../fixtures';
 
 describe('LoginMenu', () => {
-  const {item} = user;
-  const {email} = user;
+  const { item } = user;
+  const { email } = user;
   const password = 'password';
   const token = 'token here';
   const payload = {
@@ -30,7 +30,7 @@ describe('LoginMenu', () => {
 
     wrapper = mount(
       <Provider store={store}>
-        <LoginMenu/>
+        <LoginMenu />
       </Provider>,
     );
 
@@ -50,7 +50,7 @@ describe('LoginMenu', () => {
         },
       });
       await wrapper.find('.login-menu-container .form-btn-container button').simulate('click');
-      expect(loginSpy).toHaveBeenCalledWith({email, password});
+      expect(loginSpy).toHaveBeenCalledWith({ email, password });
     });
   });
 });

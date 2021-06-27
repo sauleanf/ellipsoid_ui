@@ -52,3 +52,19 @@ svg {
     opacity: 1;
   }
 }
+
+.slide-up {
+  animation: slide-up 0.4s ease-in;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
