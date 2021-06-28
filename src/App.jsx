@@ -36,7 +36,7 @@ class App extends React.Component {
 App.propTypes = {
   fetchUser: PropTypes.func.isRequired,
   setPageSet: PropTypes.func.isRequired,
-  user: PropTypes.shape(User.propType),
+  user: PropTypes.shape(User.propType).isRequired,
 };
 
 const mapStateToProps = (state) => ({

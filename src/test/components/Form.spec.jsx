@@ -52,7 +52,7 @@ describe('Form', () => {
   });
 
   describe('onSubmit', () => {
-    const email = "john@email.com";
+    const email = 'john@email.com';
     const password = 'password2';
     it('clicking the onSubmit button triggers the prop', async () => {
       await wrapper.find('[data-testid="email-form-input-field"] input').simulate('change', {

@@ -3,13 +3,13 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { UsersActions } from '../../actions';
+import { UsersActions } from '../../../actions';
 
-import rootReducer from '../../reducers';
-import Profile from '../../components/pages/Profile';
-import { user } from '../fixtures';
+import rootReducer from '../../../reducers';
+import Profile from '../../../components/pages/ProfilePage';
+import { user } from '../../fixtures';
 
-describe('Profile', () => {
+describe('ProfilePage', () => {
   const { item } = user;
   const { email } = user;
   const password = 'password';
@@ -34,7 +34,9 @@ describe('Profile', () => {
       </Provider>,
     );
 
-    logoutSpy = jest.spyOn(UsersActions, 'logout');
+    logoutSpy = jest.spyOn(UsersActions, 'logout').mockImplementation(() => async (dispatch) => dispatch({
+      type: 'foo',
+    }));
     jest.spyOn(UsersActions.Api, 'login').mockImplementation(async () => payload);
     store.dispatch(UsersActions.login({ email, password }));
   });

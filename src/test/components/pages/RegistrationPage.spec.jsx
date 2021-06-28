@@ -3,7 +3,6 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { PagesActions, UsersActions } from '../../../actions';
 
 import rootReducer from '../../../reducers';
 import RegistrationPage from '../../../components/pages/RegistrationPage';
@@ -18,7 +17,6 @@ describe('RegistrationPage', () => {
     item,
   };
   let registerSpy;
-  let pagesSpy;
   let wrapper;
   let store;
 
@@ -35,9 +33,6 @@ describe('RegistrationPage', () => {
     );
 
     registerSpy = jest.spyOn(RegistrationsActions.Api, 'create').mockImplementation(async () => payload);
-    pagesSpy = jest.spyOn(PagesActions, 'clearAndPush').mockImplementation(() => async (dispatch) => dispatch({
-      type: 'foo',
-    }));
   });
 
   describe('register', () => {

@@ -2,15 +2,14 @@ import PageReducer from '../../reducers/page.reducer';
 import { PagesActions } from '../../actions';
 import PageSets from '../../pageSet';
 
-
 describe('PageReducer', () => {
   const pages = {
     field: 'arg',
   };
 
   beforeEach(() => {
-    jest.spyOn(PageSets,)
-  })
+    jest.spyOn(PageSets);
+  });
 
   describe('SET', () => {
     it('sets the page', () => {
