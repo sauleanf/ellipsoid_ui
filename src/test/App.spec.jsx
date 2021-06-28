@@ -7,7 +7,7 @@ import rootReducer from '../reducers';
 import App from '../App';
 import { location, newspaper } from './fixtures';
 import { LocationsActions, NewsPapersActions, UsersActions } from '../actions';
-import PageFrame from '../pages/PageFrame';
+import PageFrame from '../components/pages/PageFrame';
 
 describe('App', () => {
   let wrapper;

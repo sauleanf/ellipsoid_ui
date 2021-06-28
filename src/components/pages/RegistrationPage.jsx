@@ -2,12 +2,14 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Form from '../components/Form';
-import './styles/registration-page.css';
-import RegistrationsActions from '../actions/registrations.actions';
-import PagesActions from '../actions/pages.actions';
-import Registration from '../schemas/registration';
+import Form from '../Form';
+
+import RegistrationsActions from '../../actions/registrations.actions';
+import PagesActions from '../../actions/pages.actions';
+import Registration from '../../schemas/registration';
 import Page from './Page';
+
+import './styles/registration-page.css';
 
 const formFields = [{
   name: 'name',
@@ -47,8 +49,8 @@ class RegistrationPage extends React.Component {
       <Page>
         <Form
           fields={formFields}
-          text="Register"
-          title="Register User"
+          text="Please enter the following"
+          title="Register"
           description="Please enter the following information"
           onSubmit={(formData) => register(formData)}
         />

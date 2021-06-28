@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { UsersActions, PagesActions } from '../actions';
+import { UsersActions, PagesActions } from '../../actions';
 import { Button } from '../blocks';
-import Form from '../components/Form';
+import Form from '../Form';
 import Page from './Page';
 
 import './styles/login-page.css';
@@ -26,14 +26,15 @@ const LoginPage = (props) => {
     <Page>
       <Form
         fields={formFields}
-        text="Login"
-        title="Login User"
+        text="Enter credentials"
+        title="Login"
         description="Login with your username or password"
         onSubmit={(formData) => login(formData)}
       />
       <Button
         type="transparent"
         color="dark"
+        date-testid="visit-registration-page-btn"
         onClick={() => visitRegistrationPage()}
       >
         Register

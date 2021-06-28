@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ErrorsActions } from '../actions';
-import { InputField, Snackbar, Button } from '../blocks';
+import { InputField, Snackbar, Button } from './blocks';
 import './style/form.css';
 
 class Form extends React.Component {
@@ -26,11 +26,17 @@ class Form extends React.Component {
     return _.map(fields, (field) => {
       const { label, name, icon } = field;
       const isProtected = _.get(field, 'protected', false);
+
       const errorKeys = _.keys(errors);
       const isErrored = errorKeys.includes(name) || errorKeys.includes('_all');
+
       const { state } = this;
+
+      const testId = `${_.kebabCase(name)}-form-input-field`;
+
       return (
         <InputField
+          data-testid={testId}
           id={`form-input-field-${_.snakeCase(name)}`}
           key={name}
           icon={icon}
@@ -77,7 +83,8 @@ class Form extends React.Component {
   }
 
   render() {
-    const { text } = this.props;
+    const { title, text } = this.props;
+    const testId = `${_.kebabCase(title)}-form-submit-btn`;
     return (
       <div>
         {this.renderNotification()}
@@ -86,7 +93,10 @@ class Form extends React.Component {
           {this.renderInputs()}
         </div>
         <div className="form-btn-container">
-          <Button onClick={() => this.onFormSubmit()}>
+          <Button
+            data-testid={testId}
+            onClick={() => this.onFormSubmit()}
+          >
             {text}
           </Button>
         </div>
@@ -97,7 +107,7 @@ class Form extends React.Component {
 
 Form.propTypes = {
   text: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   description: PropTypes.string,
   errors: PropTypes.shape({}).isRequired,
   clearErrors: PropTypes.func.isRequired,
@@ -111,7 +121,6 @@ Form.propTypes = {
 
 Form.defaultProps = {
   text: 'Submit',
-  title: null,
   description: null,
   fields: [],
   onSubmit: () => null,

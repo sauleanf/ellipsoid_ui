@@ -3,7 +3,7 @@ import {
   mount,
   shallow,
 } from 'enzyme';
-import { Modal } from '../../blocks';
+import { Modal } from '../../../components/blocks';
 
 describe('Modal', () => {
   let wrapper;

@@ -8,7 +8,7 @@ import { UsersActions } from '../../actions';
 import rootReducer from '../../reducers';
 import BottomBar from '../../components/BottomBar';
 import LoginMenu from '../../components/LoginMenu';
-import Profile from '../../pages/Profile';
+import Profile from '../../components/pages/Profile';
 import { user } from '../fixtures';
 
 describe('BottomBar', () => {

@@ -1,11 +1,10 @@
-/* eslint-disable */
 import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import PagesActions from '../actions/pages.actions';
+import PagesActions from '../../actions/pages.actions';
 
-import PageSets from './set/PageSets';
+import PageSets from '../../pageSet';
 import { Button, Icon } from '../blocks';
 import './styles/page-frame.css';
 
@@ -25,7 +24,7 @@ class PageFrame extends React.Component {
           {text}
         </Button>
       );
-    })
+    });
   }
 
   renderFooter() {
@@ -45,12 +44,10 @@ class PageFrame extends React.Component {
   renderPage() {
     const { page, pageSet } = this.props;
     const PageComponent = PageSets.getComponent(pageSet, page);
-    return  <PageComponent />;
+    return <PageComponent />;
   }
 
   render() {
-
-
     return (
       <div className="page-frame-container">
         {this.renderPage()}

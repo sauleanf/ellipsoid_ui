@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Button } from '../../blocks';
+import { Button } from '../../../components/blocks';
 
 describe('Button', () => {
   let onClickSpy;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ClickPulse } from '../../blocks';
+import { ClickPulse } from '../../../components/blocks';
 
 describe('ClickPulse', () => {
   const x = 20;

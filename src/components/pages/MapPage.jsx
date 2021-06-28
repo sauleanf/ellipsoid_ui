@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MapContainer, SpinningIcon } from '../blocks';
 
-import SideMenu from '../components/SideMenu';
-import TopBar from '../components/TopBar';
+import SideMenu from '../SideMenu';
+import TopBar from '../TopBar';
 
-import { Location } from '../schemas';
-import { ArticlesActions, LocationsActions, NewsPapersActions } from '../actions';
+import { Location } from '../../schemas';
+import { ArticlesActions, LocationsActions, NewsPapersActions } from '../../actions';
 import './styles/map-page.css';
 
 class MapPage extends React.Component {

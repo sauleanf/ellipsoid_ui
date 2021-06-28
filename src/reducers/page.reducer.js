@@ -1,11 +1,11 @@
 import PagesActions from '../actions/pages.actions';
-import PageSets from '../pages/set';
+import PageSets from '../pageSet';
 
 const defaultPageSet = PageSets.getDefaultPageSet();
 
 const initialState = {
   pages: [PageSets.getDefaultPage(defaultPageSet)],
-  pageSet: defaultPageSet,
+  group: defaultPageSet,
 };
 
 const pageReducer = (state = initialState, action) => {
@@ -38,13 +38,13 @@ const pageReducer = (state = initialState, action) => {
         pages: [action.payload],
       };
     }
-    case PagesActions.types.SET_PAGE_SET: {
-      const pageSet = action.payload;
-      const pages = [PageSets.getDefaultPage(pageSet)];
+    case PagesActions.types.SET_PAGE_GROUP: {
+      const group = action.payload;
+      const pages = [PageSets.getDefaultPage(group)];
       return {
         ...state,
         pages,
-        pageSet,
+        group,
       };
     }
     default: {

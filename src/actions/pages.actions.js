@@ -1,9 +1,9 @@
 class PagesActions {
-  static setPageSet(pageSet) {
+  static setPageGroup(pageGroup) {
     return (dispatch) => {
       dispatch({
-        type: this.types.SET_PAGE_SET,
-        payload: pageSet,
+        type: this.types.SET_PAGE_GROUP,
+        payload: pageGroup,
       });
     };
   }
@@ -37,7 +37,7 @@ class PagesActions {
   static get types() {
     return {
       CLEAR_AND_PUSH: 'clear and push',
-      SET_PAGE_SET: 'set page set',
+      SET_PAGE_GROUP: 'set page group',
       POP_ALL: 'pop all pages',
       PUSH: 'push page',
       POP: 'pop page',

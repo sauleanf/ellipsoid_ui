@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { LocationsActions } from '../actions';
-import { Navbar, SearchBar } from '../blocks';
+import { Navbar, SearchBar } from './blocks';
 
 const TopBar = (props) => {
   const { filteredLocations } = props;

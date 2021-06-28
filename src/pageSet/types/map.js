@@ -1,4 +1,4 @@
-import MapPage from '../../MapPage';
+import MapPage from '../../components/pages/MapPage';
 
 export default {
   component: MapPage,

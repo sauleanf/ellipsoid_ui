@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { PagesActions, RegistrationsActions } from '../actions';
+import { PagesActions, RegistrationsActions } from '../../actions';
 import { Button } from '../blocks';
 import Page from './Page';
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { User } from './schemas';
 import { UsersActions } from './actions';
-import PageFrame from './pages/PageFrame';
+import PageFrame from './components/pages/PageFrame';
 import PagesActions from './actions/pages.actions';
 
 class App extends React.Component {

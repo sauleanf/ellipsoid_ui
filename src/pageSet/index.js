@@ -14,14 +14,6 @@ class PageSets {
     return _.get(pageSetData, 'footer', true);
   }
 
-  static getPageData(pageSet, page) {
-    const pageSetData = _.get(pageConfig, pageSet);
-
-    const { attributes } = pageSetData;
-
-    return _.get(attributes, page);
-  }
-
   static getDefaultPage(pageSet) {
     const pageSetData = _.get(pageConfig, pageSet);
     return _.get(pageSetData, 'default');
@@ -32,7 +24,9 @@ class PageSets {
   }
 
   static getComponent(pageSet, page) {
-    const pageData = this.getPageData(pageSet, page);
+    const pageSetData = _.get(pageConfig, pageSet);
+    const { attributes } = pageSetData;
+    const pageData = _.get(attributes, page);
 
     return _.get(pageData, 'component');
   }

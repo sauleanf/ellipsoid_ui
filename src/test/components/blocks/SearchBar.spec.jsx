@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SearchBar } from '../../blocks';
+import { SearchBar } from '../../../components/blocks';
 
 describe('SearchBar', () => {
   let wrapper;

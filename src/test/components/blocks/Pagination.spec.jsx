@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Pagination } from '../../blocks';
+import { Pagination } from '../../../components/blocks';
 
 describe('Pagination', () => {
   const page = 2;
