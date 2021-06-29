@@ -1,4 +1,4 @@
-import LoginPage from '../../components/pages/LoginPage';
+import LoginPage from './LoginPage';
 
 export default {
   component: LoginPage,

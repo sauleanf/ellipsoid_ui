@@ -1,4 +1,4 @@
-import LoadingPage from '../../components/pages/LoadingPage';
+import LoadingPage from './LoadingPage';
 
 export default {
   component: LoadingPage,

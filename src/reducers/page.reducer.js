@@ -1,5 +1,5 @@
 import PagesActions from '../actions/pages.actions';
-import PageSets from '../pageSet';
+import PageSets from '../components/pages/config';
 
 const defaultPageSet = PageSets.getDefaultPageSet();
 

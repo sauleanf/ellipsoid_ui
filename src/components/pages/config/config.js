@@ -1,16 +1,11 @@
-import mapSet from './types/map';
-import loginSet from './types/login';
-import registrationSet from './types/registration';
-import registrationCompletedSet from './types/registrationCompleted';
-import profileSet from './types/profile';
-import loadingSet from './types/loading';
-import feedSet from './types/feed';
-
-const groups = {
-  AUTH: 'authenticated',
-  DEFAULT: 'normal',
-  LOADING: 'loading',
-};
+import mapSet from '../map/map';
+import loginSet from '../login/login';
+import registrationSet from '../registration/registration';
+import registrationCompletedSet from '../registrationCompleted/registrationCompleted';
+import profileSet from '../profile/profile';
+import loadingSet from '../loading/loading';
+import feedSet from '../feed/feed';
+import groups from './groups';
 
 export default {
   groups,

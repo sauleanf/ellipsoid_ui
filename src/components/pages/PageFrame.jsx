@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PagesActions from '../../actions/pages.actions';
 
-import PageSets from '../../pageSet';
+import PageSets from './config';
 import { Button, Icon } from '../blocks';
 import './styles/page-frame.css';
 

@@ -1,6 +1,6 @@
 import PageReducer from '../../reducers/page.reducer';
 import { PagesActions } from '../../actions';
-import PageSets from '../../pageSet';
+import PageSets from '../../components/pages/config';
 
 describe('PageReducer', () => {
   const pages = {

@@ -2,14 +2,14 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Form from '../Form';
+import Form from '../../Form';
 
-import RegistrationsActions from '../../actions/registrations.actions';
-import PagesActions from '../../actions/pages.actions';
-import Registration from '../../schemas/registration';
-import Page from './Page';
+import RegistrationsActions from '../../../actions/registrations.actions';
+import PagesActions from '../../../actions/pages.actions';
+import Registration from '../../../schemas/registration';
+import Page from '../Page';
 
-import './styles/registration-page.css';
+import '../styles/registration-page.css';
 
 const formFields = [{
   name: 'name',

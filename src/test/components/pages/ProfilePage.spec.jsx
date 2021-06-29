@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { UsersActions } from '../../../actions';
 
 import rootReducer from '../../../reducers';
-import Profile from '../../../components/pages/ProfilePage';
+import Profile from '../../../components/pages/profile/ProfilePage';
 import { user } from '../../fixtures';
 
 describe('ProfilePage', () => {

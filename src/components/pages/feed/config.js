@@ -1,4 +1,4 @@
-import FeedPage from '../../components/pages/FeedPage';
+import FeedPage from './FeedPage';
 
 export default {
   component: FeedPage,

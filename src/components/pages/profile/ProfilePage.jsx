@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { User } from '../../schemas';
-import { Icon } from '../blocks';
-import { UsersActions } from '../../actions';
-import './styles/profile-page.css';
-import Page from './Page';
+import { User } from '../../../schemas';
+import { Icon } from '../../blocks';
+import { UsersActions } from '../../../actions';
+import '../styles/profile-page.css';
+import Page from '../Page';
 
 const ProfilePage = (props) => {
   const { user, logout } = props;

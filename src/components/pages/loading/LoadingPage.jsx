@@ -1,6 +1,6 @@
 import React from 'react';
-import { Icon } from '../blocks';
-import Page from './Page';
+import { Icon } from '../../blocks';
+import Page from '../Page';
 
 const LoadingPage = () => (
   <Page>

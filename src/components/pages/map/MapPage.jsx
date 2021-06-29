@@ -2,14 +2,14 @@ import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { MapContainer, SpinningIcon } from '../blocks';
+import { MapContainer, SpinningIcon } from '../../blocks';
 
-import SideMenu from '../SideMenu';
-import TopBar from '../TopBar';
+import SideMenu from '../../SideMenu';
+import TopBar from '../../TopBar';
 
-import { Location } from '../../schemas';
-import { ArticlesActions, LocationsActions, NewsPapersActions } from '../../actions';
-import './styles/map-page.css';
+import { Location } from '../../../schemas';
+import { ArticlesActions, LocationsActions, NewsPapersActions } from '../../../actions';
+import '../styles/map-page.css';
 
 class MapPage extends React.Component {
   constructor(props) {

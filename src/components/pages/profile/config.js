@@ -1,4 +1,4 @@
-import ProfilePage from '../../components/pages/ProfilePage';
+import ProfilePage from './ProfilePage';
 
 export default {
   component: ProfilePage,

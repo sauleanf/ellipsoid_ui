@@ -20,11 +20,11 @@ class App extends React.Component {
   }
 
   setPage() {
-    const { setPageSet, user } = this.props;
+    const { setPageGroup, user } = this.props;
     if (!_.isEmpty(user)) {
-      setPageSet('authenticated');
+      setPageGroup('authenticated');
     } else if (!UsersActions.Api.isAuthenticated()) {
-      setPageSet('normal');
+      setPageGroup('normal');
     }
   }
 
@@ -35,7 +35,7 @@ class App extends React.Component {
 
 App.propTypes = {
   fetchUser: PropTypes.func.isRequired,
-  setPageSet: PropTypes.func.isRequired,
+  setPageGroup: PropTypes.func.isRequired,
   user: PropTypes.shape(User.propType).isRequired,
 };
 
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: () => dispatch(UsersActions.self()),
-  setPageSet: (pageSet) => dispatch(PagesActions.setPageSet(pageSet)),
+  setPageGroup: (pageGroup) => dispatch(PagesActions.setPageGroup(pageGroup)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

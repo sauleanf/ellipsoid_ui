@@ -5,7 +5,7 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import rootReducer from '../../../reducers';
-import RegistrationPage from '../../../components/pages/RegistrationPage';
+import RegistrationPage from '../../../components/pages/registration/RegistrationPage';
 import { registration, user } from '../../fixtures';
 import RegistrationsActions from '../../../actions/registrations.actions';
 
