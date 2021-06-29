@@ -61,7 +61,6 @@ describe('PagesActions', () => {
       expect(PagesActions.types).toEqual({
         CLEAR_AND_PUSH: 'clear and push',
         SET_PAGE_GROUP: 'set page group',
-        POP_ALL: 'pop all pages',
         PUSH: 'push page',
         POP: 'pop page',
       });

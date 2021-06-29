@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from '../../../reducers';
-import RegistrationPage from '../../../components/pages/registration/RegistrationPage';
-import { registration, user } from '../../fixtures';
-import RegistrationsActions from '../../../actions/registrations.actions';
+import rootReducer from '../../../../reducers';
+import RegistrationPage from '../../../../components/pages/registration/RegistrationPage';
+import { registration, user } from '../../../fixtures';
+import RegistrationsActions from '../../../../actions/registrations.actions';
 
 describe('RegistrationPage', () => {
   const { item } = registration;

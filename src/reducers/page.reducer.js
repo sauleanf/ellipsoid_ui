@@ -1,11 +1,13 @@
 import PagesActions from '../actions/pages.actions';
-import PageSets from '../components/pages/config';
+import PageConfig from '../components/pages/config';
 
-const defaultPageSet = PageSets.getDefaultPageSet();
+const { defaultGroup } = PageConfig;
+
+const defaultPage = PageConfig.getDefaultPage(defaultGroup);
 
 const initialState = {
-  pages: [PageSets.getDefaultPage(defaultPageSet)],
-  group: defaultPageSet,
+  pages: [defaultPage],
+  group: defaultGroup,
 };
 
 const pageReducer = (state = initialState, action) => {
@@ -26,12 +28,6 @@ const pageReducer = (state = initialState, action) => {
         pages,
       };
     }
-    case PagesActions.types.POP_ALL: {
-      return {
-        ...state,
-        pages: [],
-      };
-    }
     case PagesActions.types.CLEAR_AND_PUSH: {
       return {
         ...state,
@@ -40,7 +36,7 @@ const pageReducer = (state = initialState, action) => {
     }
     case PagesActions.types.SET_PAGE_GROUP: {
       const group = action.payload;
-      const pages = [PageSets.getDefaultPage(group)];
+      const pages = [PageConfig.getDefaultPage(group)];
       return {
         ...state,
         pages,

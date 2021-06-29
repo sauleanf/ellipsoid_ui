@@ -9,7 +9,7 @@ import PagesActions from '../../../actions/pages.actions';
 import Registration from '../../../schemas/registration';
 import Page from '../Page';
 
-import '../styles/registration-page.css';
+import './style/registration-page.css';
 
 const formFields = [{
   name: 'name',

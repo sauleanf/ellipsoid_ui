@@ -7,7 +7,7 @@ import { Button } from '../../blocks';
 import Form from '../../Form';
 import Page from '../Page';
 
-import '../styles/login-page.css';
+import './style/login-page.css';
 
 const formFields = [{
   name: 'email',

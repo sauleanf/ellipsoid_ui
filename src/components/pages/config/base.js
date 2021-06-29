@@ -1,10 +1,10 @@
-import mapSet from '../map/map';
-import loginSet from '../login/login';
-import registrationSet from '../registration/registration';
-import registrationCompletedSet from '../registrationCompleted/registrationCompleted';
-import profileSet from '../profile/profile';
-import loadingSet from '../loading/loading';
-import feedSet from '../feed/feed';
+import mapSet from '../map/config';
+import loginSet from '../login/config';
+import registrationSet from '../registration/config';
+import registrationCompletedSet from '../registrationCompleted/config';
+import profileSet from '../profile/config';
+import loadingSet from '../loading/config';
+import feedSet from '../feed/config';
 import groups from './groups';
 
 export default {

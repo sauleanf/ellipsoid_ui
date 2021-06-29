@@ -10,11 +10,12 @@ import './styles/page-frame.css';
 
 class PageFrame extends React.Component {
   renderActions() {
-    const { setPage, pageSet } = this.props;
-    return PageSets.mapPageSet(pageSet, (pageData, pageKey) => {
+    const { setPage, pageGroup } = this.props;
+    return PageSets.mapPageSet(pageGroup, (pageData, pageKey) => {
       const { icon, text } = pageData;
       return (
         <Button
+          key={text}
           id="open-user-menu-btn"
           type="transparent"
           color="light"
@@ -28,8 +29,8 @@ class PageFrame extends React.Component {
   }
 
   renderFooter() {
-    const { pageSet } = this.props;
-    if (PageSets.isFooterPresent(pageSet)) {
+    const { pageGroup } = this.props;
+    if (PageSets.isFooterPresent(pageGroup)) {
       return (
         <div className="bottom-bar-container fade-in">
           <div className="bottom-bar">
@@ -42,8 +43,8 @@ class PageFrame extends React.Component {
   }
 
   renderPage() {
-    const { page, pageSet } = this.props;
-    const PageComponent = PageSets.getComponent(pageSet, page);
+    const { page, pageGroup } = this.props;
+    const PageComponent = PageSets.getComponent(pageGroup, page);
     return <PageComponent />;
   }
 
@@ -59,13 +60,13 @@ class PageFrame extends React.Component {
 
 PageFrame.propTypes = {
   page: PropTypes.string.isRequired,
-  pageSet: PropTypes.string.isRequired,
+  pageGroup: PropTypes.string.isRequired,
   setPage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   page: _.last(state.pages.pages),
-  pageSet: state.pages.pageSet,
+  pageGroup: state.pages.group,
 });
 
 const mapDispatchToProps = (dispatch) => ({

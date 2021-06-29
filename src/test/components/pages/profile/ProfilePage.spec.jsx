@@ -3,11 +3,11 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { UsersActions } from '../../../actions';
+import { UsersActions } from '../../../../actions';
 
-import rootReducer from '../../../reducers';
-import Profile from '../../../components/pages/profile/ProfilePage';
-import { user } from '../../fixtures';
+import rootReducer from '../../../../reducers';
+import ProfilePage from '../../../../components/pages/profile/ProfilePage';
+import { user } from '../../../fixtures';
 
 describe('ProfilePage', () => {
   const { item } = user;
@@ -30,7 +30,7 @@ describe('ProfilePage', () => {
 
     wrapper = mount(
       <Provider store={store}>
-        <Profile />
+        <ProfilePage />
       </Provider>,
     );
 

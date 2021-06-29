@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import config from './config';
+import config from './base';
 
 class PageConfig {
   static mapPageSet(pageSet, cb) {
@@ -9,22 +9,22 @@ class PageConfig {
     return _.map(navigation, (page) => cb(attributes[page], page));
   }
 
-  static isFooterPresent(pageSet) {
-    const pageSetData = _.get(config, pageSet);
+  static isFooterPresent(pageGroup) {
+    const pageSetData = _.get(config, pageGroup);
     return _.get(pageSetData, 'footer', true);
   }
 
-  static getDefaultPage(pageSet) {
-    const pageSetData = _.get(config, pageSet);
+  static getDefaultPage(pageGroup) {
+    const pageSetData = _.get(config, pageGroup);
     return _.get(pageSetData, 'default');
   }
 
-  static getDefaultPageSet() {
+  static get defaultGroup() {
     return _.get(config, 'default');
   }
 
-  static getComponent(pageSet, page) {
-    const pageSetData = _.get(config, pageSet);
+  static getComponent(pageGroup, page) {
+    const pageSetData = _.get(config, pageGroup);
     const { attributes } = pageSetData;
     const pageData = _.get(attributes, page);
 

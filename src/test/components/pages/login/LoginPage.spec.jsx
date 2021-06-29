@@ -3,11 +3,11 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { PagesActions, UsersActions } from '../../../actions';
+import { PagesActions, UsersActions } from '../../../../actions';
 
-import rootReducer from '../../../reducers';
-import LoginPage from '../../../components/pages/login/LoginPage';
-import { user } from '../../fixtures';
+import rootReducer from '../../../../reducers';
+import LoginPage from '../../../../components/pages/login/LoginPage';
+import { user } from '../../../fixtures';
 
 describe('LoginPage', () => {
   const { item } = user;
