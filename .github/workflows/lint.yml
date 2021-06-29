@@ -1,4 +1,4 @@
-name: Client UI Tests
+name: Eslint
 
 on:
   push:
