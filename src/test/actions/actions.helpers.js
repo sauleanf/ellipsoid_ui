@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import { ArticlesActions, NewsPapersActions } from '../../actions';
+import LocationActions from '../../actions/locations.actions';
 
 export const testGetAll = ({
   Actions,
@@ -99,4 +101,16 @@ export const testFilter = ({
       });
     });
   });
+};
+
+export const mockOutRequests = () => {
+  jest.spyOn(ArticlesActions, 'getAll').mockImplementation(() => async (dispatch) => dispatch({
+    type: 'foo',
+  }));
+  jest.spyOn(LocationActions, 'getAll').mockImplementation(() => async (dispatch) => dispatch({
+    type: 'foo',
+  }));
+  jest.spyOn(NewsPapersActions, 'getAll').mockImplementation(() => async (dispatch) => dispatch({
+    type: 'foo',
+  }));
 };
