@@ -102,6 +102,17 @@ export const user = {
   },
 };
 
+export const registration = {
+  raw: {
+    id: 'id3',
+    user: user.raw,
+  },
+  item: {
+    id: 'id3',
+    user: user.item,
+  },
+};
+
 export const createArticlesAndNewspapers = (newspaperNumber, articleNumber) => {
   const newspapers = _.map(_.range(0, newspaperNumber), (index) => ({
     id: `id${index}`,

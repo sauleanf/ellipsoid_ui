@@ -9,9 +9,10 @@ import Form from '../../components/Form';
 describe('Form', () => {
   let wrapper;
   let store;
+  let submitSpy;
 
-  const text = 'text here';
-  const title = 'lorem ipsum';
+  const text = 'text';
+  const title = 'title';
   const description = 'ego sum magnus';
 
   const formFields = [{
@@ -30,6 +31,7 @@ describe('Form', () => {
       rootReducer,
       applyMiddleware(thunk),
     );
+    submitSpy = jest.fn();
     wrapper = mount(
       <Provider store={store}>
         <Form
@@ -37,6 +39,7 @@ describe('Form', () => {
           text={text}
           title={title}
           description={description}
+          onSubmit={submitSpy}
         />
       </Provider>,
     );
@@ -46,5 +49,29 @@ describe('Form', () => {
     expect(wrapper.find('.form-title').text()).toEqual(title);
     expect(wrapper.find('.form-description').text()).toEqual(description);
     expect(wrapper.find('.form-btn-container').text()).toEqual(text);
+  });
+
+  describe('onSubmit', () => {
+    const email = 'john@email.com';
+    const password = 'password2';
+    it('clicking the onSubmit button triggers the prop', async () => {
+      await wrapper.find('[data-testid="email-form-input-field"] input').simulate('change', {
+        target: {
+          value: email,
+        },
+      });
+
+      await wrapper.find('[data-testid="password-form-input-field"] input').simulate('change', {
+        target: {
+          value: password,
+        },
+      });
+
+      await wrapper.find('[data-testid="title-form-submit-btn"] button').simulate('click');
+      expect(submitSpy).toBeCalledWith({
+        email,
+        password,
+      });
+    });
   });
 });

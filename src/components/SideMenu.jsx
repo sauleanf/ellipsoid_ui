@@ -7,7 +7,7 @@ import {
   Modal,
   PaginatedMenu,
   SpinningIcon,
-} from '../blocks';
+} from './blocks';
 import ArticlePost from './ArticlePost';
 import './style/side-menu.css';
 
