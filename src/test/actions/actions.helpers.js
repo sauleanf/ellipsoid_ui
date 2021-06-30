@@ -103,14 +103,14 @@ export const testFilter = ({
   });
 };
 
+export const mockAction = (Actions, action) => jest
+  .spyOn(Actions, action)
+  .mockImplementation(() => async (dispatch) => dispatch({
+    type: 'foo',
+  }));
+
 export const mockOutRequests = () => {
-  jest.spyOn(ArticlesActions, 'getAll').mockImplementation(() => async (dispatch) => dispatch({
-    type: 'foo',
-  }));
-  jest.spyOn(LocationActions, 'getAll').mockImplementation(() => async (dispatch) => dispatch({
-    type: 'foo',
-  }));
-  jest.spyOn(NewsPapersActions, 'getAll').mockImplementation(() => async (dispatch) => dispatch({
-    type: 'foo',
-  }));
+  mockAction(ArticlesActions, 'getAll');
+  mockAction(LocationActions, 'getAll');
+  mockAction(NewsPapersActions, 'getAll');
 };
