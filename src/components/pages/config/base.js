@@ -1,19 +1,19 @@
-import mapSet from '../map/config';
-import loginSet from '../login/config';
-import registrationSet from '../registration/config';
-import registrationCompletedSet from '../registrationCompleted/config';
-import profileSet from '../profile/config';
-import loadingSet from '../loading/config';
-import feedSet from '../feed/config';
+import mapConfig from '../map/config';
+import loginConfig from '../login/config';
+import registrationConfig from '../registration/config';
+import registrationCompletedConfig from '../registrationCompleted/config';
+import profileConfig from '../profile/config';
+import loadingConfig from '../loading/config';
+import feedConfig from '../feed/config';
 import groups from './groups';
 
 export default {
   groups,
   [groups.AUTH]: {
     attributes: {
-      map: mapSet,
-      feed: feedSet,
-      profile: profileSet,
+      map: mapConfig,
+      feed: feedConfig,
+      profile: profileConfig,
     },
     navigation: [
       'map',
@@ -24,10 +24,10 @@ export default {
   },
   [groups.DEFAULT]: {
     attributes: {
-      map: mapSet,
-      login: loginSet,
-      registrationCompleted: registrationCompletedSet,
-      registration: registrationSet,
+      map: mapConfig,
+      login: loginConfig,
+      registrationCompleted: registrationCompletedConfig,
+      registration: registrationConfig,
     },
     navigation: [
       'map',
@@ -37,7 +37,7 @@ export default {
   },
   [groups.LOADING]: {
     attributes: {
-      loading: loadingSet,
+      loading: loadingConfig,
     },
     default: 'loading',
     footer: false,
