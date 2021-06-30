@@ -1,46 +1,50 @@
-import mapConfig from '../map/config';
-import loginConfig from '../login/config';
-import registrationConfig from '../registration/config';
-import registrationCompletedConfig from '../registrationCompleted/config';
-import profileConfig from '../profile/config';
-import loadingConfig from '../loading/config';
-import feedConfig from '../feed/config';
-import groups from './groups';
+import map from '../map/config';
+import login from '../login/config';
+import registration from '../registration/config';
+import registrationCompleted from '../registrationCompleted/config';
+import profile from '../profile/config';
+import loading from '../loading/config';
+import feed from '../feed/config';
+import { pages, groups } from './constants';
+
+const {
+  MAP, FEED, LOADING, LOGIN, PROFILE,
+} = pages;
 
 export default {
   groups,
   [groups.AUTH]: {
     attributes: {
-      map: mapConfig,
-      feed: feedConfig,
-      profile: profileConfig,
+      map,
+      feed,
+      profile,
     },
     navigation: [
-      'map',
-      'feed',
-      'profile',
+      MAP,
+      FEED,
+      PROFILE,
     ],
-    default: 'map',
+    default: MAP,
   },
   [groups.DEFAULT]: {
     attributes: {
-      map: mapConfig,
-      login: loginConfig,
-      registrationCompleted: registrationCompletedConfig,
-      registration: registrationConfig,
+      map,
+      login,
+      registrationCompleted,
+      registration,
     },
     navigation: [
-      'map',
-      'login',
+      MAP,
+      LOGIN,
     ],
-    default: 'map',
+    default: map.name,
   },
   [groups.LOADING]: {
     attributes: {
-      loading: loadingConfig,
+      loading,
     },
-    default: 'loading',
+    default: LOADING,
     footer: false,
   },
-  default: 'loading',
+  default: LOADING,
 };

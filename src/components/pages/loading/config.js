@@ -1,7 +1,6 @@
 import LoadingPage from './LoadingPage';
 
 export default {
+  name: 'loading',
   component: LoadingPage,
-  text: 'Sign In',
-  icon: 'fa-user',
 };

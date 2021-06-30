@@ -8,6 +8,7 @@ import Form from '../../Form';
 import Page from '../Page';
 
 import './style/login-page.css';
+import { pages } from '../config/constants';
 
 const formFields = [{
   name: 'email',
@@ -26,9 +27,9 @@ const LoginPage = (props) => {
     <Page>
       <Form
         fields={formFields}
-        text="Enter credentials"
+        text="Login"
         title="Login"
-        description="Login with your username or password"
+        description="Enter credentials"
         onSubmit={(formData) => login(formData)}
       />
       <Button
@@ -50,7 +51,7 @@ LoginPage.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   login: ({ email, password }) => dispatch(UsersActions.login({ email, password })),
-  visitRegistrationPage: () => dispatch(PagesActions.push('registration')),
+  visitRegistrationPage: () => dispatch(PagesActions.push(pages.REGISTRATION)),
 });
 
 export default connect(null, mapDispatchToProps)(LoginPage);

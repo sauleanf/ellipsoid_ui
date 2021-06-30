@@ -8,6 +8,7 @@ import rootReducer from '../../../../reducers';
 import RegistrationCompletedPage from '../../../../components/pages/registrationCompleted/RegistrationCompletedPage';
 import { PagesActions } from '../../../../actions';
 import { mockAction } from '../../../actions/actions.helpers';
+import { pages } from '../../../../components/pages/config/constants';
 
 describe('RegistrationCompletedPage', () => {
   let wrapper;
@@ -32,7 +33,7 @@ describe('RegistrationCompletedPage', () => {
   describe('register', () => {
     it('makes a dispatch to redux', async () => {
       await wrapper.find('[data-testid="visit-login-page-btn"] button').simulate('click');
-      expect(pageSpy).toHaveBeenCalledWith('login');
+      expect(pageSpy).toHaveBeenCalledWith(pages.LOGIN);
     });
   });
 });

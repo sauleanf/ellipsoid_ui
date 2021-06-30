@@ -10,7 +10,7 @@ import {
   UsersActions,
 } from '../actions';
 import PageFrame from '../components/pages/PageFrame';
-import groups from '../components/pages/config/groups';
+import { groups } from '../components/pages/config/constants';
 import { mockOutRequests } from './actions/actions.helpers';
 
 describe('App', () => {

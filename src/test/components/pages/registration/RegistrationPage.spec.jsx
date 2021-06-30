@@ -8,6 +8,9 @@ import rootReducer from '../../../../reducers';
 import RegistrationPage from '../../../../components/pages/registration/RegistrationPage';
 import { registration, user } from '../../../fixtures';
 import RegistrationsActions from '../../../../actions/registrations.actions';
+import { PagesActions } from '../../../../actions';
+import { mockAction } from '../../../actions/actions.helpers';
+import { pages } from '../../../../components/pages/config/constants';
 
 describe('RegistrationPage', () => {
   const { item } = registration;
@@ -16,9 +19,11 @@ describe('RegistrationPage', () => {
   const payload = {
     item,
   };
-  let registerSpy;
   let wrapper;
   let store;
+
+  let pageSpy;
+  let registerSpy;
 
   beforeEach(() => {
     store = createStore(
@@ -32,6 +37,7 @@ describe('RegistrationPage', () => {
       </Provider>,
     );
 
+    pageSpy = mockAction(PagesActions, 'clearAndPush');
     registerSpy = jest.spyOn(RegistrationsActions.Api, 'create').mockImplementation(async () => payload);
   });
 
@@ -64,8 +70,15 @@ describe('RegistrationPage', () => {
       });
       await wrapper.find('[data-testid="register-form-submit-btn"] button').simulate('click');
       expect(registerSpy).toHaveBeenCalledWith({
-        email, name, username, password, passwordConfirmation: password,
+        email,
+        name,
+        username,
+        password,
+        passwordConfirmation: password,
       });
+
+      await wrapper.update();
+      expect(pageSpy).toHaveBeenCalledWith(pages.REGISTRATION_COMPLETED);
     });
   });
 });

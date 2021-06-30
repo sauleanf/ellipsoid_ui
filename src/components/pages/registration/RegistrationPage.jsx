@@ -10,6 +10,7 @@ import Registration from '../../../schemas/registration';
 import Page from '../Page';
 
 import './style/registration-page.css';
+import { pages } from '../config/constants';
 
 const formFields = [{
   name: 'name',
@@ -49,7 +50,7 @@ class RegistrationPage extends React.Component {
       <Page>
         <Form
           fields={formFields}
-          text="Please enter the following"
+          text="Register User"
           title="Register"
           description="Please enter the following information"
           onSubmit={(formData) => register(formData)}
@@ -71,7 +72,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   register: (data) => dispatch(RegistrationsActions.create(data)),
-  visitRegistrationCompletedPage: () => dispatch(PagesActions.clearAndPush('registrationCompleted')),
+  visitRegistrationCompletedPage: () => dispatch(
+    PagesActions.clearAndPush(pages.REGISTRATION_COMPLETED),
+  ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

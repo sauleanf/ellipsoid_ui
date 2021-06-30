@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { PagesActions } from '../../../actions';
 import { Button } from '../../blocks';
 import Page from '../Page';
+import { pages } from '../config/constants';
 
 const RegistrationCompletedPage = (props) => {
   const { visitLoginPage } = props;
@@ -26,7 +27,7 @@ RegistrationCompletedPage.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  visitLoginPage: () => dispatch(PagesActions.clearAndPush('login')),
+  visitLoginPage: () => dispatch(PagesActions.clearAndPush(pages.LOGIN)),
 });
 
 export default connect(null, mapDispatchToProps)(RegistrationCompletedPage);

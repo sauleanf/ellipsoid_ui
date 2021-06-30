@@ -9,7 +9,7 @@ import rootReducer from '../../../reducers';
 import { PagesActions } from '../../../actions';
 import PageFrame from '../../../components/pages/PageFrame';
 import RegistrationPage from '../../../components/pages/registration/RegistrationPage';
-import groups from '../../../components/pages/config/groups';
+import { groups } from '../../../components/pages/config/constants';
 import LoadingPage from '../../../components/pages/loading/LoadingPage';
 import MapPage from '../../../components/pages/map/MapPage';
 import FeedPage from '../../../components/pages/feed/FeedPage';
