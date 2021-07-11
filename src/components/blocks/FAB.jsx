@@ -1,22 +1,31 @@
-/* eslint-disable */
-import React from "react";
-import {Icon} from "./index";
-import "./style/fab.css"
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from './Icon';
+import './style/fab.css';
 
 const FAB = (props) => {
   const { onClick, text, icon } = props;
-  return (<div className="fab-container">
-    <button
-      id="fab"
-      type="button"
-      className="fab-btn"
-      onClick={() => onClick()}
-    >
-      <Icon icon={icon} theme="dark" />
-      <h3 className="fab-text"> {text} </h3>
-    </button>
-  </div>)
-}
+  return (
+    <div className="fab-container">
+      <button
+        id="fab"
+        type="button"
+        className="fab-btn"
+        onClick={() => onClick()}
+      >
+        <Icon icon={icon} theme="dark" />
+        <h3 className="fab-text">
+          {text}
+        </h3>
+      </button>
+    </div>
+  );
+};
+
+FAB.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+};
 
 export default FAB;
-

@@ -2,6 +2,9 @@
   width: 100vw;
   height: 100vh;
   transition: all 0.5s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .map-loading-container {
@@ -20,4 +23,17 @@
   font-size: 2rem;
   width: 10rem;
   font-family: sans-serif;
+}
+
+#mapchart {
+  width: 90%;
+  height: 80vh;
+}
+
+.map-marker {
+  /* adjusting for the marker dimensions
+    so that it is centered on coordinates */
+  margin-left: -8px;
+  margin-top: -8px;
+  box-sizing: border-box;
 }
