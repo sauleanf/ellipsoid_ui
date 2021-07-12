@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 
 import PropType from 'prop-types';
-import './style/pagination.css';
+import './styles/pagination.css';
 import Icon from './Icon';
 
 class Pagination extends React.Component {

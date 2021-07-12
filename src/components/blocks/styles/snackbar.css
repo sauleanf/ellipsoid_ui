@@ -11,6 +11,7 @@
   margin: 1rem;
   border-radius: 4px;
   transition: all 0.2s ease-in;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 .snackbar-container-open {

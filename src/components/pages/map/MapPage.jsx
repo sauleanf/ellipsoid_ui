@@ -2,10 +2,12 @@ import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { MapContainer, SpinningIcon } from '../../blocks';
+import { MapContainer } from '../../blocks';
 
 import SideMenu from '../../SideMenu';
 import TopBar from '../../TopBar';
+import Page from '../Page';
+import LoadingPage from '../loading/LoadingPage';
 
 import { Location } from '../../../schemas';
 import { ArticlesActions, LocationsActions, NewsPapersActions } from '../../../actions';
@@ -20,13 +22,16 @@ class MapPage extends React.Component {
   }
 
   componentDidMount() {
-    const {
-      fetchNewspapers,
-      fetchLocations,
-    } = this.props;
+    const { locations } = this.props;
+    if (_.isEmpty(locations)) {
+      const {
+        fetchNewspapers,
+        fetchLocations,
+      } = this.props;
 
-    fetchNewspapers();
-    fetchLocations();
+      fetchNewspapers();
+      fetchLocations();
+    }
   }
 
   get locations() {
@@ -72,21 +77,19 @@ class MapPage extends React.Component {
   render() {
     if (_.isEmpty(this.locations)) {
       return (
-        <div className="map-loading-container">
-          <SpinningIcon />
-        </div>
+        <LoadingPage />
       );
     }
 
     return (
-      <div className="main-page-container">
+      <Page>
         {this.renderSideMenu()}
         <TopBar />
         <MapContainer
           markers={this.locations}
           onRetrieveCoordinates={(lng, lat) => this.retrieveArticles(lng, lat, 1)}
         />
-      </div>
+      </Page>
     );
   }
 }

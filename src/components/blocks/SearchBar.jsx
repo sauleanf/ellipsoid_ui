@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import './style/search-bar.css';
+import './styles/search-bar.css';
 
 class SearchBar extends React.Component {
   constructor(props) {

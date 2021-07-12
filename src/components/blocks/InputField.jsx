@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style/input-field.css';
+import './styles/input-field.css';
 
 const InputField = (props) => {
   const {
@@ -16,7 +16,9 @@ const InputField = (props) => {
   const inputClassName = `input-box ${errorClassName}`;
   return (
     <div className={inputClassName}>
-      <i className={`fas ${icon}`} />
+      <div className="input-field-icon-container">
+        <i className={`fas ${icon}`} />
+      </div>
       <input
         name={name}
         type={type}

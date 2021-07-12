@@ -60,7 +60,7 @@ describe('PageFrame', () => {
         map: MapPage,
         feed: FeedPage,
       }, (PageComponent, pageName) => {
-        store.dispatch(PagesActions.push(pageName));
+        store.dispatch(PagesActions.pushPage(pageName));
         wrapper.update();
         const pageWrapper = wrapper.find(PageComponent);
 
@@ -88,7 +88,7 @@ describe('PageFrame', () => {
         registration: RegistrationPage,
         registrationCompleted: RegistrationCompletedPage,
       }, (PageComponent, pageName) => {
-        store.dispatch(PagesActions.push(pageName));
+        store.dispatch(PagesActions.pushPage(pageName));
         wrapper.update();
         const pageWrapper = wrapper.find(PageComponent);
 

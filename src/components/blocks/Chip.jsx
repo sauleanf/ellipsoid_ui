@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from './Icon';
-import './style/chip.css';
+import './styles/chip.css';
 
 const Chip = (props) => {
   const { icon, text } = props;

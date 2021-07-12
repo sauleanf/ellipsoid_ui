@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
-import './style/form.css';
+import './styles/form.css';
 
 const Form = (props) => {
   const {

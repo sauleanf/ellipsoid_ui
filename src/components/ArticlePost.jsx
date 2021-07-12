@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Article } from '../schemas';
-import './style/article-post.css';
+import './styles/article-post.css';
 
 const ArticlePost = (props) => {
   const { article } = props;

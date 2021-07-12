@@ -9,7 +9,7 @@ import am4geodata_worldLow from '@amcharts/amcharts4-geodata/worldLow';
 
 import ClickPulse from './ClickPulse';
 
-import './style/map-container.css';
+import './styles/map-container.css';
 
 class MapContainer extends React.Component {
   constructor(props) {
@@ -21,6 +21,10 @@ class MapContainer extends React.Component {
 
   componentDidMount() {
     this.createMap();
+  }
+
+  componentWillUnmount() {
+    this.deleteMap();
   }
 
   onRetrieveCoordinates(e) {
@@ -85,6 +89,10 @@ class MapContainer extends React.Component {
     this.renderLocations();
   }
 
+  deleteMap() {
+    this.map.dispose();
+  }
+
   renderLocations() {
     this.imageSeries = this.map.series.push(
       new am4maps.MapImageSeries(),
@@ -104,6 +112,7 @@ class MapContainer extends React.Component {
 
   render() {
     const { pulsingClick } = this.state;
+
     return (
       <div className="map-container">
         {pulsingClick}

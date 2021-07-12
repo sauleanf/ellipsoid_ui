@@ -37,7 +37,7 @@ describe('LoginPage', () => {
     );
 
     loginSpy = jest.spyOn(UsersActions.Api, 'login').mockImplementation(async () => payload);
-    pagesSpy = jest.spyOn(PagesActions, 'push').mockImplementation(() => async (dispatch) => dispatch({
+    pagesSpy = jest.spyOn(PagesActions, 'pushPage').mockImplementation(() => async (dispatch) => dispatch({
       type: 'foo',
     }));
   });
