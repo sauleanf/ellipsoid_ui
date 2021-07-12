@@ -70,7 +70,7 @@ class MapPage extends React.Component {
   }
 
   render() {
-    if (!this.locations) {
+    if (_.isEmpty(this.locations)) {
       return (
         <div className="map-loading-container">
           <SpinningIcon />

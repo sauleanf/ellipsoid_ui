@@ -1,30 +1,17 @@
-import React, { Component } from 'react';
 import _ from 'lodash';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Graticule,
-  Marker,
-} from 'react-simple-maps';
+
+import * as am4core from '@amcharts/amcharts4/core';
+import * as am4maps from '@amcharts/amcharts4/maps';
+// eslint-disable-next-line camelcase
+import am4geodata_worldLow from '@amcharts/amcharts4-geodata/worldLow';
 
 import ClickPulse from './ClickPulse';
-import LocationMarker from './LocationMarker';
+
 import './style/map-container.css';
 
-const geoConfig = { scale: 100 };
-const geoUrl = 'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
-
-const colors = {
-  mapBackground: '#ffffff',
-  countryColor: '#d0d0d0',
-  borderColor: '#bbbbbb',
-  lines: '#f8f8f8',
-  markerColor: '#48b19c',
-};
-
-class MapContainer extends Component {
+class MapContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,15 +19,21 @@ class MapContainer extends Component {
     };
   }
 
-  getCoordinates(e) {
-    const svg = this.wrapper.querySelector('svg');
-    const box = svg.getBoundingClientRect();
+  componentDidMount() {
+    this.createMap();
+  }
+
+  onRetrieveCoordinates(e) {
+    if (_.isUndefined(e.event)) return;
+
+    const { longitude, latitude } = this.map.svgPointToGeo(e.svgPoint);
+    const { clientX, clientY } = e.event;
 
     this.setState({
       pulsingClick: (<ClickPulse
-        key={`${e.clientX}-${e.clientY}`}
-        x={e.clientX}
-        y={e.clientY}
+        key={`${clientX}-${clientY}`}
+        x={clientX}
+        y={clientY}
       />),
     });
 
@@ -55,92 +48,66 @@ class MapContainer extends Component {
       });
     }, 1000);
 
-    const { height, width } = box;
-
-    const xFactor = 180 / (height / 1.97);
-    const yFactor = 360 / height;
-
-    const latitude = yFactor * (e.clientY - height / 2);
-    const longitude = xFactor * (e.clientX - width / 2);
-
-    const coordinates = [
-      longitude,
-      -(180 / Math.PI) * Math.atan(Math.sinh((Math.PI / 180) * latitude)),
-    ];
-
     const { onRetrieveCoordinates } = this.props;
-    onRetrieveCoordinates(coordinates[0], coordinates[1]);
+    onRetrieveCoordinates(longitude, latitude);
   }
 
-  renderMarkers() {
+  createMapMarkerTemplate() {
+    this.mapImage = this.imageSeries.mapImages.template;
+    this.mapMarker = this.mapImage.createChild(am4core.Sprite);
+    this.mapMarker.path = 'M4 12 A12 12 0 0 1 28 12 C28 20, 16 32, 16 32 C16 32, 4 20 4 12 M11 12 A5 5 0 0 0 21 12 A5 5 0 0 0 11 12 Z';
+    this.mapMarker.width = 32;
+    this.mapMarker.height = 32;
+    this.mapMarker.scale = 0.7;
+    this.mapMarker.fill = am4core.color('#3F4B3B');
+    this.mapMarker.fillOpacity = 0.8;
+    this.mapMarker.horizontalCenter = 'middle';
+    this.mapMarker.verticalCenter = 'bottom';
+  }
+
+  createMap() {
+    this.map = am4core.create('mapchart', am4maps.MapChart);
+    // eslint-disable-next-line camelcase
+    this.map.geodata = am4geodata_worldLow;
+
+    this.map.projection = new am4maps.projections.Eckert6();
+    this.polygonSeries = this.map.series.push(new am4maps.MapPolygonSeries());
+    this.polygonSeries.useGeodata = true;
+
+    this.map.seriesContainer.draggable = false;
+    this.map.seriesContainer.resizable = false;
+
+    // creates an event that grabs the coordinates when clicked
+    this.map.seriesContainer.events.on('hit', (e) => {
+      this.onRetrieveCoordinates(e);
+    });
+
+    this.renderLocations();
+  }
+
+  renderLocations() {
+    this.imageSeries = this.map.series.push(
+      new am4maps.MapImageSeries(),
+    );
+
+    this.createMapMarkerTemplate();
+
     const { markers } = this.props;
-    return _.map(
-      markers,
-      (marker) => (
-        <Marker
-          key={marker.id}
-          coordinates={marker.coordinates}
-        >
-          <LocationMarker
-            color={colors.markerColor}
-          />
-        </Marker>
-      ),
-    );
-  }
+    _.each(markers, (location) => {
+      const marker = this.imageSeries.mapImages.create();
+      const [longitude, latitude] = location.coordinates;
 
-  // eslint-disable-next-line class-methods-use-this
-  renderGeography({ geographies }) {
-    return geographies.map(
-      (geo) => (
-        <Geography
-          style={{
-            default: {
-              outline: 'none',
-            },
-            hover: {
-              outline: 'none',
-            },
-            pressed: {
-              outline: 'none',
-            },
-          }}
-          key={geo.rsmKey}
-          geography={geo}
-          fill={colors.countryColor}
-          stroke={colors.borderColor}
-          strokeWidth=".5"
-        />
-      ),
-    );
+      marker.latitude = latitude;
+      marker.longitude = longitude;
+    });
   }
 
   render() {
     const { pulsingClick } = this.state;
     return (
-      <div ref={(wrapper) => {
-        this.wrapper = wrapper;
-      }}
-      >
-        <ComposableMap
-          projection="geoMercator"
-          className="fade-in map-container"
-          style={{
-            backgroundColor: colors.mapBackground,
-          }}
-          width={200}
-          projectionConfig={geoConfig}
-          onClick={(e) => this.getCoordinates(e)}
-        >
-          <Graticule
-            stroke={colors.lines}
-          />
-          <Geographies geography={geoUrl}>
-            {this.renderGeography}
-          </Geographies>
-          {this.renderMarkers()}
-        </ComposableMap>
+      <div className="map-container">
         {pulsingClick}
+        <div id="mapchart" />
       </div>
     );
   }

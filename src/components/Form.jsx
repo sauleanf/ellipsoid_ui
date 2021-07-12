@@ -28,7 +28,7 @@ class Form extends React.Component {
       const isProtected = _.get(field, 'protected', false);
 
       const errorKeys = _.keys(errors);
-      const isErrored = errorKeys.includes(name) || errorKeys.includes('_all');
+      const isErrored = errorKeys.includes(name) || errorKeys.includes('all');
 
       const { state } = this;
 
