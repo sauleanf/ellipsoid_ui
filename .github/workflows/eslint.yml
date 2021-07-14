@@ -18,6 +18,6 @@ jobs:
     - name: Install dependencies
       run: |
         npm i
-    - name: Run Jest
+    - name: Run Eslint
       run: |
-        npm run test
+        npm run lint
