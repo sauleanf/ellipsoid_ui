@@ -73,7 +73,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   register: (data) => dispatch(RegistrationsActions.create(data)),
   visitRegistrationCompletedPage: () => dispatch(
-    PagesActions.clearAndPush(pages.REGISTRATION_COMPLETED),
+    PagesActions.clearAndPushPage(pages.REGISTRATION_COMPLETED),
   ),
 });
 

@@ -2,9 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ErrorsActions } from '../actions';
+import { PagesActions } from '../actions';
 import { InputField, Snackbar, Button } from './blocks';
-import './style/form.css';
+import './styles/form.css';
 
 class Form extends React.Component {
   constructor(props) {
@@ -17,7 +17,8 @@ class Form extends React.Component {
   }
 
   onFormSubmit() {
-    const { onSubmit } = this.props;
+    const { clearErrors, onSubmit } = this.props;
+    clearErrors();
     onSubmit(this.state);
   }
 
@@ -127,11 +128,11 @@ Form.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.errors.errors,
+  errors: state.pages.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  clearErrors: () => dispatch(ErrorsActions.clear()),
+  clearErrors: () => dispatch(PagesActions.clearErrors()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

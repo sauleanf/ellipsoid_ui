@@ -21,7 +21,7 @@ describe('RegistrationCompletedPage', () => {
       applyMiddleware(thunk),
     );
 
-    pageSpy = mockAction(PagesActions, 'clearAndPush');
+    pageSpy = mockAction(PagesActions, 'clearAndPushPage');
 
     wrapper = mount(
       <Provider store={store}>

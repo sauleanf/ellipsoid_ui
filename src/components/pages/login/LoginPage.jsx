@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import { UsersActions, PagesActions } from '../../../actions';
+import {
+  PagesActions,
+  UsersActions,
+} from '../../../actions';
 import { Button } from '../../blocks';
 import Form from '../../Form';
 import Page from '../Page';
@@ -22,7 +24,10 @@ const formFields = [{
 }];
 
 const LoginPage = (props) => {
-  const { login, visitRegistrationPage } = props;
+  const {
+    login,
+    visitRegistrationPage,
+  } = props;
   return (
     <Page>
       <Form
@@ -51,7 +56,7 @@ LoginPage.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   login: ({ email, password }) => dispatch(UsersActions.login({ email, password })),
-  visitRegistrationPage: () => dispatch(PagesActions.push(pages.REGISTRATION)),
+  visitRegistrationPage: () => dispatch(PagesActions.pushPage(pages.REGISTRATION)),
 });
 
 export default connect(null, mapDispatchToProps)(LoginPage);

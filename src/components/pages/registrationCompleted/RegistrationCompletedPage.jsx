@@ -27,7 +27,7 @@ RegistrationCompletedPage.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  visitLoginPage: () => dispatch(PagesActions.clearAndPush(pages.LOGIN)),
+  visitLoginPage: () => dispatch(PagesActions.clearAndPushPage(pages.LOGIN)),
 });
 
 export default connect(null, mapDispatchToProps)(RegistrationCompletedPage);

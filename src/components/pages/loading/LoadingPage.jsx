@@ -1,10 +1,10 @@
 import React from 'react';
-import { Icon } from '../../blocks';
+import { SpinningIcon } from '../../blocks';
 import Page from '../Page';
 
 const LoadingPage = () => (
   <Page>
-    <Icon icon="fa-spinner fa-spin" />
+    <SpinningIcon />
   </Page>
 );
 

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import ErrorsActions from './errors.actions';
+import PagesActions from './pages.actions';
 
 class ApiActions {
   static get Api() { return null; }
@@ -67,7 +67,7 @@ class ApiActions {
           payload,
         });
       } catch (e) {
-        dispatch(ErrorsActions.set(JSON.parse(e.request.response)));
+        dispatch(PagesActions.setErrors(JSON.parse(e.request.response)));
       }
     };
   }

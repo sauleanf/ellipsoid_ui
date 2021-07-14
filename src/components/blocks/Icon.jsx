@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './style/icon.css';
+import './styles/icon.css';
 
 const Icon = (props) => {
   const { icon, theme } = props;

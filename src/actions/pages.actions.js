@@ -1,6 +1,9 @@
+import _ from 'lodash';
+
 class PagesActions {
   static setPageGroup(pageGroup) {
     return (dispatch) => {
+      dispatch(this.clearErrors());
       dispatch({
         type: this.types.SET_PAGE_GROUP,
         payload: pageGroup,
@@ -8,38 +11,65 @@ class PagesActions {
     };
   }
 
-  static clearAndPush(page) {
+  static clearAndPushPage(page) {
     return (dispatch) => {
+      dispatch(this.clearErrors());
       dispatch({
-        type: this.types.CLEAR_AND_PUSH,
+        type: this.types.CLEAR_AND_PUSH_PAGE,
         payload: page,
       });
     };
   }
 
-  static push(page) {
+  static pushPage(page) {
     return (dispatch) => {
+      dispatch(this.clearErrors());
       dispatch({
-        type: this.types.PUSH,
+        type: this.types.PUSH_PAGE,
         payload: page,
       });
     };
   }
 
-  static pop() {
+  static popPage() {
     return (dispatch) => {
+      dispatch(this.clearErrors());
       dispatch({
-        type: this.types.POP,
+        type: this.types.POP_PAGE,
       });
+    };
+  }
+
+  static setErrors(errorData) {
+    return (dispatch) => {
+      // eslint-disable-next-line dot-notation
+      const error = errorData['error_message'];
+      const payload = {};
+      _.each(error, (errorText, errorKey) => {
+        payload[_.camelCase(errorKey)] = errorText;
+      });
+
+      dispatch({
+        type: this.types.SET_ERRORS,
+        payload,
+      });
+    };
+  }
+
+  static clearErrors() {
+    return (dispatch) => {
+      dispatch({ type: this.types.CLEAR_ERRORS });
     };
   }
 
   static get types() {
     return {
-      CLEAR_AND_PUSH: 'clear and push',
+      CLEAR_AND_PUSH_PAGE: 'clear and push',
       SET_PAGE_GROUP: 'set page group',
-      PUSH: 'push page',
-      POP: 'pop page',
+      PUSH_PAGE: 'push page',
+      POP_PAGE: 'pop page',
+      SET_ERRORS: 'set errors',
+      CLEAR_ERRORS: 'clear errors',
     };
   }
 }

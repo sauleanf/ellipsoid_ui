@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import PagesActions from '../../actions/pages.actions';
 
 import PageSets from './config';
-import { Button, Icon } from '../blocks';
+import { Button, FAB, Icon } from '../blocks';
 import './styles/page-frame.css';
 
 class PageFrame extends React.Component {
@@ -42,9 +42,21 @@ class PageFrame extends React.Component {
     return null;
   }
 
+  renderFAB() {
+    const { pages } = this.props;
+    if (pages.length < 2) {
+      return null;
+    }
+    const { popPage } = this.props;
+    return <FAB onClick={() => popPage()} text="Go back" icon="fas fa-arrow-left" />;
+  }
+
   renderPage() {
-    const { page, pageGroup } = this.props;
+    const { pages, pageGroup } = this.props;
+    const page = _.last(pages);
+
     const PageComponent = PageSets.getComponent(pageGroup, page);
+
     return <PageComponent />;
   }
 
@@ -52,6 +64,7 @@ class PageFrame extends React.Component {
     return (
       <div className="page-frame-container">
         {this.renderPage()}
+        {this.renderFAB()}
         {this.renderFooter()}
       </div>
     );
@@ -59,18 +72,20 @@ class PageFrame extends React.Component {
 }
 
 PageFrame.propTypes = {
-  page: PropTypes.string.isRequired,
+  pages: PropTypes.arrayOf(PropTypes.string).isRequired,
   pageGroup: PropTypes.string.isRequired,
   setPage: PropTypes.func.isRequired,
+  popPage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  page: _.last(state.pages.pages),
+  pages: state.pages.pages,
   pageGroup: state.pages.group,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setPage: (page) => dispatch(PagesActions.clearAndPush(page)),
+  setPage: (page) => dispatch(PagesActions.clearAndPushPage(page)),
+  popPage: () => dispatch(PagesActions.popPage()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageFrame);

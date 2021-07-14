@@ -9,7 +9,7 @@ import {
   SpinningIcon,
 } from './blocks';
 import ArticlePost from './ArticlePost';
-import './style/side-menu.css';
+import './styles/side-menu.css';
 
 class SideMenu extends React.Component {
   constructor(props) {

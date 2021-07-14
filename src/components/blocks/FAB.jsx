@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from './Icon';
-import './style/fab.css';
+import './styles/fab.css';
 
 const FAB = (props) => {
   const { onClick, text, icon } = props;

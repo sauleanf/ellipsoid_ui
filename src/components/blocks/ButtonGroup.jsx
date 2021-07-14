@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style/button-group.css';
+import './styles/button-group.css';
 
 const ButtonGroup = (props) => {
   const { children } = props;

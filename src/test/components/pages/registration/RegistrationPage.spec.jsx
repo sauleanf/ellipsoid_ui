@@ -37,7 +37,7 @@ describe('RegistrationPage', () => {
       </Provider>,
     );
 
-    pageSpy = mockAction(PagesActions, 'clearAndPush');
+    pageSpy = mockAction(PagesActions, 'clearAndPushPage');
     registerSpy = jest.spyOn(RegistrationsActions.Api, 'create').mockImplementation(async () => payload);
   });
 

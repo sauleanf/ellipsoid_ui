@@ -9,9 +9,10 @@ describe('store', () => {
 
   const reducerTypes = [
     'articles',
-    'errors',
     'newspapers',
     'locations',
+    'pages',
+    'registrations',
     'users',
   ];
 

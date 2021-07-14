@@ -15,13 +15,26 @@ jest.mock('../../components/pages/config', () => ({
 }));
 
 describe('PageReducer', () => {
-  describe('PUSH', () => {
+  const defaultState = {
+    pages: [defaultPage],
+    group: defaultGroup,
+    errors: {},
+  };
+
+  const errors = {
+    field: 'arg',
+  };
+
+  describe('PUSH_PAGE', () => {
     it('pushes one page to the stack', () => {
       const newState = PageReducer(undefined, {
-        type: PagesActions.types.PUSH,
+        type: PagesActions.types.PUSH_PAGE,
         payload: page,
       });
-      expect(newState).toEqual({ pages: [defaultPage, page], group: defaultGroup });
+      expect(newState).toEqual({
+        ...defaultState,
+        pages: [defaultPage, page],
+      });
     });
   });
 
@@ -29,28 +42,37 @@ describe('PageReducer', () => {
   const secondPage = 'page 2';
   const pages = [firstPage, secondPage];
 
-  describe('POP', () => {
+  describe('POP_PAGE', () => {
     it('pops one page from the stack', () => {
       const newState = PageReducer({
+        ...defaultState,
         pages,
-        group: defaultGroup,
       }, {
-        type: PagesActions.types.POP,
+        type: PagesActions.types.POP_PAGE,
       });
-      expect(newState).toEqual({ pages: [firstPage], group: defaultGroup });
+      expect(newState).toEqual({
+        pages: [firstPage],
+        group: defaultGroup,
+        errors: {},
+      });
     });
   });
 
-  describe('CLEAR_AND_PUSH', () => {
+  describe('CLEAR_AND_PUSH_PAGE', () => {
     it('clears the old pages and pushes the new page', () => {
       const newState = PageReducer({
+        ...defaultState,
         pages,
-        group: defaultGroup,
       }, {
-        type: PagesActions.types.CLEAR_AND_PUSH,
+        type: PagesActions.types.CLEAR_AND_PUSH_PAGE,
         payload: page,
       });
-      expect(newState).toEqual({ pages: [page], group: defaultGroup });
+
+      expect(newState).toEqual({
+        pages: [page],
+        group: defaultGroup,
+        errors: {},
+      });
     });
   });
 
@@ -62,7 +84,33 @@ describe('PageReducer', () => {
         type: PagesActions.types.SET_PAGE_GROUP,
         payload: newPageGroup,
       });
-      expect(newState).toEqual({ pages: [page], group: newPageGroup });
+      expect(newState).toEqual({
+        pages: [page],
+        group: newPageGroup,
+        errors: {},
+      });
+    });
+  });
+
+  describe('SET_ERROR', () => {
+    it('sets the error', () => {
+      const newState = PageReducer(undefined, {
+        type: PagesActions.types.SET_ERRORS,
+        payload: errors,
+      });
+      expect(newState).toEqual({ ...defaultState, errors });
+    });
+  });
+
+  describe('CLEAR_ERRORS', () => {
+    it('sets the error', () => {
+      const newState = PageReducer({
+        ...defaultState,
+        errors,
+      }, {
+        type: PagesActions.types.CLEAR_ERRORS,
+      });
+      expect(newState).toEqual(defaultState);
     });
   });
 });

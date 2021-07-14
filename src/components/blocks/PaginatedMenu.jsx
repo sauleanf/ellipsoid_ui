@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Pagination from './Pagination';
-import './style/paginated-menu.css';
+import './styles/paginated-menu.css';
 
 class PaginatedMenu extends React.Component {
   renderPagination() {

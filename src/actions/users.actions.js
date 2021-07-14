@@ -1,6 +1,6 @@
 import ApiActions from './api.actions';
 import UserApi from '../api/user.api';
-import ErrorsActions from './errors.actions';
+import PagesActions from './pages.actions';
 
 class UsersActions extends ApiActions {
   static get Api() {
@@ -17,7 +17,7 @@ class UsersActions extends ApiActions {
         });
       } catch (e) {
         const error = JSON.parse(e.request.response);
-        dispatch(ErrorsActions.set(error));
+        dispatch(PagesActions.setErrors(error));
       }
     };
   }

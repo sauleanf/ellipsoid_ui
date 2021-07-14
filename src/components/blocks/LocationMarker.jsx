@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style/location-marker.css';
+import './styles/location-marker.css';
 
 const LocationMarker = (props) => {
   const { color, onClick } = props;
