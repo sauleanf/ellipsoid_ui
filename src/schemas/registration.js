@@ -8,8 +8,8 @@ class Registration extends Schema {
 
   static get fields() {
     return {
-      code: {
-        type: types.Number,
+      activated: {
+        type: types.Boolean,
       },
     };
   }

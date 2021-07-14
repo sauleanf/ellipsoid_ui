@@ -72,6 +72,21 @@ class ApiActions {
     };
   }
 
+  static update(id, params) {
+    return async (dispatch) => {
+      // makes update params request
+      try {
+        const payload = await this.Api.update(id, params);
+        dispatch({
+          type: this.types.SET,
+          payload,
+        });
+      } catch (e) {
+        dispatch(PagesActions.setErrors(JSON.parse(e.request.response)));
+      }
+    };
+  }
+
   // action types
 
   static get types() {

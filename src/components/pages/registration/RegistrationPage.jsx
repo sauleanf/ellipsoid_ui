@@ -38,9 +38,9 @@ const formFields = [{
 
 class RegistrationPage extends React.Component {
   componentDidUpdate() {
-    const { registration, visitRegistrationCompletedPage } = this.props;
+    const { registration, visitRegistrationConfirm } = this.props;
     if (!_.isEmpty(registration)) {
-      visitRegistrationCompletedPage();
+      visitRegistrationConfirm();
     }
   }
 
@@ -63,7 +63,7 @@ class RegistrationPage extends React.Component {
 RegistrationPage.propTypes = {
   registration: PropTypes.shape(Registration.propType).isRequired,
   register: PropTypes.func.isRequired,
-  visitRegistrationCompletedPage: PropTypes.func.isRequired,
+  visitRegistrationConfirm: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -72,8 +72,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   register: (data) => dispatch(RegistrationsActions.create(data)),
-  visitRegistrationCompletedPage: () => dispatch(
-    PagesActions.clearAndPushPage(pages.REGISTRATION_COMPLETED),
+  visitRegistrationConfirm: () => dispatch(
+    PagesActions.clearAndPushPage(pages.REGISTRATION_CONFIRM),
   ),
 });
 

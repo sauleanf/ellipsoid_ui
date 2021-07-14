@@ -6,6 +6,7 @@ import types from './types';
 const propTypes = {
   [types.Number]: () => PropTypes.number,
   [types.String]: () => PropTypes.string,
+  [types.Boolean]: () => PropTypes.bool,
   [types.DateTime]: () => PropTypes.instanceOf(moment),
   [types.Association]: (field) => PropTypes.shape(field.schema.propType),
   [types.Coordinates]: () => PropTypes.arrayOf(PropTypes.number),
@@ -78,6 +79,10 @@ class Schema {
         }
         case types.Coordinates: {
           item[attributeName] = val;
+          break;
+        }
+        case types.Boolean: {
+          item[attributeName] = !!(val);
           break;
         }
         default: {
