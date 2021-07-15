@@ -105,12 +105,10 @@ export const user = {
 export const registration = {
   raw: {
     id: 'id3',
-    user: user.raw,
     activated: false,
   },
   item: {
     id: 'id3',
-    user: user.item,
     activated: false,
   },
 };
