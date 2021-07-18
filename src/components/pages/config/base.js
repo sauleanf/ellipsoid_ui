@@ -2,13 +2,18 @@ import map from '../map/config';
 import login from '../login/config';
 import registration from '../registration/config';
 import registrationCompleted from '../registrationCompleted/config';
+import registrationConfirm from '../registrationConfirm/config';
 import profile from '../profile/config';
 import loading from '../loading/config';
 import feed from '../feed/config';
 import { pages, groups } from './constants';
 
 const {
-  MAP, FEED, LOADING, LOGIN, PROFILE,
+  MAP,
+  FEED,
+  LOADING,
+  LOGIN,
+  PROFILE,
 } = pages;
 
 export default {
@@ -31,13 +36,14 @@ export default {
       map,
       login,
       registrationCompleted,
+      registrationConfirm,
       registration,
     },
     navigation: [
       MAP,
       LOGIN,
     ],
-    default: map.name,
+    default: MAP,
   },
   [groups.LOADING]: {
     attributes: {

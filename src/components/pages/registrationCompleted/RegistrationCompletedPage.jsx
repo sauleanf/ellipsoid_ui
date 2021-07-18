@@ -11,7 +11,7 @@ const RegistrationCompletedPage = (props) => {
   const { visitLoginPage } = props;
   return (
     <Page>
-      <p> Congrats you are registered! </p>
+      <h1> Congrats you are registered! </h1>
       <Button
         data-testid="visit-login-page-btn"
         onClick={() => visitLoginPage()}

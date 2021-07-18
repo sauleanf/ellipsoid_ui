@@ -3,6 +3,7 @@ export const pages = {
   LOGIN: 'login',
   REGISTRATION: 'registration',
   REGISTRATION_COMPLETED: 'registrationCompleted',
+  REGISTRATION_CONFIRM: 'registrationConfirm',
   PROFILE: 'profile',
   LOADING: 'loading',
   FEED: 'feed',

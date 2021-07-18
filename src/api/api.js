@@ -27,7 +27,8 @@ class ApiClient {
     const headers = this.retrieveHeaders();
     const serializedParams = this.Schema.serializeData(params);
     const serializedRequestData = this.Schema.serializeData(requestData);
-    const url = _.isNull(id) ? endpoint : _.join([endpoint, id], '/');
+
+    const url = _.isUndefined(id) ? endpoint : `${endpoint}/${id}`;
 
     const res = await axios({
       url,

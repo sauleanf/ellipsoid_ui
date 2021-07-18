@@ -62,7 +62,7 @@ export const testShow = ({
 }) => {
   describe('show', () => {
     beforeEach(() => {
-      mockRequest(url + raw.id, GET, {
+      mockRequest(`${url}/${raw.id}`, GET, {
         item: raw,
       }, token);
     });

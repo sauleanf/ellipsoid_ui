@@ -11,7 +11,7 @@ import AuthApi from '../../api/auth.api';
 import { GET, POST } from '../../api/methods';
 
 describe('UserApi', () => {
-  const url = 'localhost/api/v1/users/';
+  const url = 'localhost/api/v1/users';
   const {
     raw,
     item,
@@ -42,7 +42,7 @@ describe('UserApi', () => {
 
   describe('login', () => {
     beforeEach(() => {
-      mockRequest('localhost/api/v1/auth/', POST, {
+      mockRequest('localhost/api/v1/auth', POST, {
         item: raw,
         token,
       });

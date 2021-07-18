@@ -78,7 +78,7 @@ describe('RegistrationPage', () => {
       });
 
       await wrapper.update();
-      expect(pageSpy).toHaveBeenCalledWith(pages.REGISTRATION_COMPLETED);
+      expect(pageSpy).toHaveBeenCalledWith(pages.REGISTRATION_CONFIRM);
     });
   });
 });
