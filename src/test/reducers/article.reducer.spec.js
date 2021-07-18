@@ -43,7 +43,7 @@ describe('ArticlesReducer', () => {
         coordinates,
         page: 1,
         pages: 2,
-        fetching: false,
+        loaded: true,
       });
     });
   });

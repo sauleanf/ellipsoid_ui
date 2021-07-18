@@ -3,14 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { User } from './schemas';
-import { UsersActions } from './actions';
+import { NewsPapersActions, UsersActions } from './actions';
 import PageFrame from './components/pages/PageFrame';
 import PagesActions from './actions/pages.actions';
 
 class App extends React.Component {
   componentDidMount() {
-    const { fetchUser } = this.props;
+    const { fetchUser, areNewsPapersLoaded } = this.props;
     fetchUser();
+
+    if (!areNewsPapersLoaded) {
+      const { fetchNewspapers } = this.props;
+      fetchNewspapers();
+    }
 
     this.setPage();
   }
@@ -35,15 +40,19 @@ class App extends React.Component {
 
 App.propTypes = {
   fetchUser: PropTypes.func.isRequired,
+  fetchNewspapers: PropTypes.func.isRequired,
+  areNewsPapersLoaded: PropTypes.bool.isRequired,
   setPageGroup: PropTypes.func.isRequired,
   user: PropTypes.shape(User.propType).isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  areNewsPapersLoaded: state.newspapers.loaded,
   user: state.users.item,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchNewspapers: () => dispatch(NewsPapersActions.getAll()),
   fetchUser: () => dispatch(UsersActions.self()),
   setPageGroup: (pageGroup) => dispatch(PagesActions.setPageGroup(pageGroup)),
 });

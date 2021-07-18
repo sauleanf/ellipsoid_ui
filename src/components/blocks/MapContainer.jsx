@@ -1,14 +1,13 @@
+/* eslint-disable camelcase */
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4maps from '@amcharts/amcharts4/maps';
-// eslint-disable-next-line camelcase
 import am4geodata_worldLow from '@amcharts/amcharts4-geodata/worldLow';
 
 import ClickPulse from './ClickPulse';
-
 import './styles/map-container.css';
 
 class MapContainer extends React.Component {
@@ -21,6 +20,14 @@ class MapContainer extends React.Component {
 
   componentDidMount() {
     this.createMap();
+    this.renderLocations();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.map.series.removeIndex(1).dispose();
+      this.renderLocations();
+    }
   }
 
   componentWillUnmount() {
@@ -85,8 +92,6 @@ class MapContainer extends React.Component {
     this.map.seriesContainer.events.on('hit', (e) => {
       this.onRetrieveCoordinates(e);
     });
-
-    this.renderLocations();
   }
 
   deleteMap() {
@@ -100,8 +105,8 @@ class MapContainer extends React.Component {
 
     this.createMapMarkerTemplate();
 
-    const { markers } = this.props;
-    _.each(markers, (location) => {
+    const { locations } = this.props;
+    _.each(locations, (location) => {
       const marker = this.imageSeries.mapImages.create();
       const [longitude, latitude] = location.coordinates;
 
@@ -112,7 +117,6 @@ class MapContainer extends React.Component {
 
   render() {
     const { pulsingClick } = this.state;
-
     return (
       <div className="map-container">
         {pulsingClick}
@@ -124,7 +128,7 @@ class MapContainer extends React.Component {
 
 MapContainer.propTypes = {
   onRetrieveCoordinates: PropTypes.func,
-  markers: PropTypes.arrayOf(PropTypes.shape({
+  locations: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     coordinates: PropTypes.arrayOf(PropTypes.number),
   })),
@@ -132,7 +136,7 @@ MapContainer.propTypes = {
 
 MapContainer.defaultProps = {
   onRetrieveCoordinates: () => null,
-  markers: [],
+  locations: [],
 };
 
 export default MapContainer;

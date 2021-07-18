@@ -17,7 +17,7 @@ export default createApiReducer(ArticlesActions, {
         page,
         pages,
         coordinates,
-        fetching: false,
+        loaded: true,
       };
     },
   },

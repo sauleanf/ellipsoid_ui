@@ -19,15 +19,15 @@ describe('App', () => {
   let store;
 
   beforeEach(() => {
-    store = createStore(
-      rootReducer,
-      applyMiddleware(thunk),
-    );
-
     jest.spyOn(UsersActions.Api, 'isAuthenticated').mockImplementation(() => false);
     jest.spyOn(UsersActions.Api, 'self').mockImplementation(() => ({
       item: {},
     }));
+
+    store = createStore(
+      rootReducer,
+      applyMiddleware(thunk),
+    );
 
     mockOutRequests();
 
