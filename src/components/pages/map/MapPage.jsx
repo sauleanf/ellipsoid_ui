@@ -14,16 +14,9 @@ import { ArticlesActions, LocationsActions, NewsPapersActions } from '../../../a
 import './style/map-page.css';
 
 class MapPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filterParam: '',
-    };
-  }
-
   componentDidMount() {
-    const { locations } = this.props;
-    if (_.isEmpty(locations)) {
+    const { areLocationsLoaded } = this.props;
+    if (!areLocationsLoaded) {
       const {
         fetchNewspapers,
         fetchLocations,
@@ -41,16 +34,12 @@ class MapPage extends React.Component {
       filterParam,
     } = this.props;
 
-    if (!_.isEmpty(filterParam)) {
-      return filteredLocations;
-    }
-
+    if (!_.isEmpty(filterParam)) return filteredLocations;
     return locations;
   }
 
   retrieveArticles(lng, lat, page) {
-    const { fetchArticles } = this.props;
-    const { filterParam } = this.state;
+    const { filterParam, fetchArticles } = this.props;
     const args = {
       lng,
       lat,
@@ -58,7 +47,6 @@ class MapPage extends React.Component {
     };
 
     if (!_.isEmpty(filterParam)) args.name = filterParam;
-
     fetchArticles(args);
   }
 
@@ -74,27 +62,31 @@ class MapPage extends React.Component {
     );
   }
 
+  renderMapContainer() {
+    return (
+      <MapContainer
+        locations={this.locations}
+        onRetrieveCoordinates={(lng, lat) => this.retrieveArticles(lng, lat, 1)}
+      />
+    );
+  }
+
   render() {
-    if (_.isEmpty(this.locations)) {
-      return (
-        <LoadingPage />
-      );
-    }
+    const { areLocationsLoaded } = this.props;
+    if (!areLocationsLoaded) return <LoadingPage />;
 
     return (
       <Page>
         {this.renderSideMenu()}
         <TopBar />
-        <MapContainer
-          markers={this.locations}
-          onRetrieveCoordinates={(lng, lat) => this.retrieveArticles(lng, lat, 1)}
-        />
+        {this.renderMapContainer()}
       </Page>
     );
   }
 }
 
 MapPage.propTypes = {
+  areLocationsLoaded: PropTypes.bool.isRequired,
   fetchArticles: PropTypes.func.isRequired,
   locations: PropTypes.arrayOf(PropTypes.shape(Location.propType)),
   filteredLocations: PropTypes.arrayOf(PropTypes.shape(Location.propType)),
@@ -112,6 +104,7 @@ MapPage.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  areLocationsLoaded: state.locations.loaded,
   filterParam: state.locations.filtered.param,
   newspapers: state.newspapers.items,
   locations: state.locations.items,

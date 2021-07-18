@@ -39,9 +39,8 @@ class ApiClient {
     });
 
     const { data } = res;
-    if (_.has(data, 'items')) {
-      data.items = this.Schema.deserializeList(data.items);
-    } else if (_.has(data, 'item')) data.item = this.Schema.deserializeItem(data.item);
+    if (_.has(data, 'items')) data.items = this.Schema.deserializeList(data.items);
+    else if (_.has(data, 'item')) data.item = this.Schema.deserializeItem(data.item);
 
     return data;
   }
@@ -71,10 +70,6 @@ class ApiClient {
       method: PUT,
       requestData,
     });
-  }
-
-  static get schema() {
-    return this.Schema.schema;
   }
 }
 

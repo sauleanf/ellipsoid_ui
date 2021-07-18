@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import '@testing-library/jest-dom';
 import { configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
@@ -32,3 +33,7 @@ global.localStorage = new LocalStorageMock();
 jest.mock('axios');
 
 configure({ adapter: new Adapter() });
+
+class SVGPathElement extends HTMLElement {}
+
+window.SVGPathElement = SVGPathElement;

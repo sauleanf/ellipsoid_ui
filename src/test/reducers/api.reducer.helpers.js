@@ -21,7 +21,7 @@ export const testFetching = ({
         },
         page: -1,
         pages: 0,
-        fetching: true,
+        loaded: false,
       }, state));
     });
   });
@@ -54,7 +54,7 @@ export const testIndex = ({
         },
         page: 1,
         pages: 2,
-        fetching: false,
+        loaded: true,
       }, state));
     });
   });
@@ -85,7 +85,7 @@ export const testSet = ({
         },
         page: -1,
         pages: 0,
-        fetching: false,
+        loaded: true,
       }, state));
     });
   });
@@ -120,7 +120,7 @@ export const testFilter = ({
         },
         page: -1,
         pages: 0,
-        fetching: false,
+        loaded: true,
       }, state));
     });
   });
@@ -146,7 +146,7 @@ export const testRemove = ({
       },
       page: 1,
       pages: 3,
-      fetching: false,
+      loaded: true,
     }, state);
     const completeInitialState = _.assign({
       items: [],
@@ -159,7 +159,7 @@ export const testRemove = ({
       },
       page: -1,
       pages: 0,
-      fetching: true,
+      loaded: false,
     }, initialState);
     it('resets the state', () => {
       const newState = reduce(completeState, {

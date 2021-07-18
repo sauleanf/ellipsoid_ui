@@ -8,12 +8,8 @@ class ApiActions {
 
   // api requests
 
-  static getAll(params = {}) {
+  static getAll(params = { page: 1 }) {
     return async (dispatch) => {
-      if (!_.has(params, 'page')) {
-        // eslint-disable-next-line no-param-reassign
-        params.page = 1;
-      }
       dispatch({
         type: this.types.FETCHING,
       });
@@ -31,6 +27,7 @@ class ApiActions {
       dispatch({
         type: this.types.FETCHING,
       });
+
       const payload = await this.Api.show(id);
       dispatch({
         type: this.types.SET,

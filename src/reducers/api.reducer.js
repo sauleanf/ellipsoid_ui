@@ -20,14 +20,14 @@ const createApiReducer = (
     },
     page: -1,
     pages: 0,
-    fetching: true,
+    loaded: false,
   }, initialState);
 
   return (state = initialApiState, action) => {
     const actionObj = _.assign({
       [Actions.types.FETCHING]: ({ currentState }) => ({
         ...currentState,
-        fetching: true,
+        loaded: false,
       }),
       [Actions.types.INDEX]: ({ currentState, payload }) => {
         const {
@@ -41,7 +41,7 @@ const createApiReducer = (
           items,
           page,
           pages,
-          fetching: false,
+          loaded: true,
         };
       },
       [Actions.types.SET]: ({ currentState, payload }) => {
@@ -51,7 +51,7 @@ const createApiReducer = (
         return {
           ...currentState,
           item,
-          fetching: false,
+          loaded: true,
         };
       },
       [Actions.types.REMOVE]: ({ initState }) => initState,
@@ -70,7 +70,7 @@ const createApiReducer = (
             pages,
             param,
           },
-          fetching: false,
+          loaded: true,
         };
       },
     }, actions);
