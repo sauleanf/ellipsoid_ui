@@ -2,6 +2,7 @@ import RegistrationApi from '../../api/registration.api';
 import {
   testIndex,
   testShow,
+  testCreate,
 } from './api.helpers';
 import {
   registration,
@@ -22,6 +23,13 @@ describe('RegistrationApi', () => {
   });
 
   testShow({
+    Api: RegistrationApi,
+    url,
+    item,
+    raw,
+  });
+
+  testCreate({
     Api: RegistrationApi,
     url,
     item,
